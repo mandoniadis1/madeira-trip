@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Madeira · Jan 8–16, 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // apply saved theme (or the system setting) before the page paints
+    (function () {
+      var t = localStorage.getItem("madeira2027-theme");
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+      if (t === "night") document.documentElement.dataset.theme = "night";
+    })();
+  </script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-bg" style="background-image:url('img/seixal.jpg')"></div>
+    <div class="hero-inner">
+      <p class="kicker">A journey for Madison</p>
+      <h1>Madeira</h1>
+      <p class="sub"><i>8 — 16 January 2027</i> · Seven nights · Three hotels · One rental car</p>
+      <div id="flights" class="flights"></div>
+      <div class="progress"><div id="progress-bar"></div><span id="progress-text"></span></div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <a href="#experiences">Experiences</a>
+    <a href="#hotels">Hotels</a>
+    <a href="#days">Days</a>
+    <a href="#story">Journey</a>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch day / night mode"><span class="dot"></span><span class="label">Night</span></button>
+  </nav>
+
+  <div class="with-rail">
+  <main>
+    <section id="experiences">
+      <p class="eyebrow">I</p><h2 class="section-title">What do you want to do?</h2>
+      <p class="hint">Start here. Add every hike and excursion that appeals to you, in any order. Each one is labelled for how lush it is and whether it's fine in drizzle. Next, the hotels are ranked by drive time to your picks, and then you'll arrange them into days.</p>
+      <div id="exp-filters" class="filters"></div>
+      <p id="exp-count" class="exp-count"></p>
+      <div id="exp-grid" class="grid"></div>
+    </section>
+
+    <section id="hotels">
+      <p class="eyebrow">II</p><h2 class="section-title">Where to stay</h2>
+      <p class="hint">Two stays: a resort to start, then one more hotel to finish. With a 3pm flight you don't need an airport hotel. You'll have a car, so any hotel works for either stay. Each list is ranked for that stay, using drive times to your picks (estimates). Choose one and the others step aside; tap <i>Change</i> to bring them back.</p>
+      <div class="map-wrap">
+        <div class="map-box"><div id="map"></div><p id="map-empty" class="map-empty">Add experiences in section I and they'll appear here.</p></div>
+        <div id="map-key" class="map-key"></div>
+        <p class="map-note">Satellite view: the dark green is the laurel forest and wetter north, and the browner south coast is the sunny side. Click a house to jump to that hotel.</p>
+      </div>
+      <div id="split" class="split"></div>
+      <div id="stays"></div>
+      <section class="tips">
+        <h3>Notes on the Amex Platinum</h3>
+        <ul>
+          <li><b class="b-fhr">FHR</b> Fine Hotels + Resorts (Reid's, Savoy Palace, The Reserve). Usual perks: upgrade when available, daily breakfast for 2, noon check-in when available, <b>guaranteed 4pm checkout</b>, a property credit (often ~$100) and Wi-Fi.</li>
+          <li><b class="b-thc">THC</b> The Hotel Collection (Saccharum). Perks need a <b>2+ night</b> stay: an upgrade when available and a property credit. Breakfast and late checkout usually aren't included. If you use the complimentary 4th night, check when booking that it covers Jan 9–13 and that you still get the Hotel Collection perks with it, because promotional rates sometimes can't be combined.</li>
+          <li>Your Platinum hotel credit applies to <b>prepaid</b> FHR/THC bookings through Amex Travel and resets every half-year (Jan–Jun / Jul–Dec). If you book one Amex hotel in Dec 2026 and another in Jan 2027, you may be able to use two credits. Check the terms in your Amex account first.</li>
+          <li>Weather: in January the south coast (Calheta, Ponta do Sol, Funchal) is the sunniest and driest. The north coast and the mountains are wetter, which is why they're so green. The coast is about 17–20°C and the peaks are near freezing.</li>
+        </ul>
+      </section>
+    </section>
+
+    <section id="days">
+      <p class="eyebrow">III</p><h2 class="section-title">Day by Day</h2>
+      <p class="hint">Your picks show up on each day, sorted by drive time from that night's hotel. Choose one per day, and save the views for a clear day. Restaurants link to Google Maps.</p>
+      <div id="days-tools" class="days-tools">
+        <button id="auto-plan" class="pick-btn" type="button">Plan my days for the least driving</button>
+        <p id="plan-msg" class="plan-msg">Fits your picks onto the days with the least total driving. It keeps your first resort day lazy, pairs picks that start close together, and uses the drive between hotels. You can change any day afterward.</p>
+        <p id="days-total" class="days-total"></p>
+      </div>
+      <div id="daylist"></div>
+    </section>
+
+    <section id="story">
+      <p class="eyebrow">IV</p><h2 class="section-title">The Journey, in Pictures</h2>
+      <p class="hint">Updates as you choose.</p>
+      <div id="storyboard"></div>
+      <div class="actions"><button id="reset" class="ghost">Reset everything</button></div>
+    </section>
+  </main>
+
+  <footer>
+    Photos are real: from <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a> contributors (hover the small "i" on any photo for author and license) and from each hotel's official website.
+  </footer>
+  </div>
+
+  <aside id="rail" class="rail" aria-label="Contents and notes">
+    <div class="rail-box toc-box">
+      <div class="rail-head"><h5>Contents</h5><span id="toc-progress"></span></div>
+      <nav id="toc"></nav>
+    </div>
+    <div class="rail-box notes-box">
+      <div class="rail-head"><h5>Notes</h5><span id="notes-status"></span></div>
+      <textarea id="notes" placeholder="Ideas, questions, things to book…"></textarea>
+    </div>
+  </aside>
+  <div class="rail-fabs"><button id="fab-toc" class="fab" type="button">Contents</button><button id="fab-notes" class="fab" type="button">Notes</button></div>
+
+  <div id="lightbox" class="lightbox" hidden><img alt="" /><button aria-label="Close">✕</button></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="credits.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
