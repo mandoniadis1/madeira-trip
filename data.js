@@ -1,4 +1,4 @@
-// Madeira trip data — Jan 8–16, 2027 (rental car the whole trip)
+// Madeira trip data — Jan 8–15, 2027 (rental car the whole trip)
 // Photos in img/ are real (Wikimedia Commons or official hotel websites). Sources in credits.js.
 // lat/lon are approximate trailheads / towns, used only to estimate drive times.
 // side: "S" south coast, "N" north coast, "M" mountains/plateau. pen = extra minutes for slow mountain roads.
@@ -7,7 +7,7 @@ const gmaps = (q) => "https://www.google.com/maps/search/?api=1&query=" + encode
 
 window.FLIGHTS = {
   out: { date: "Fri, Jan 8, 2027", dep: "23:25", from: "EWR", arr: "14:10 +1", to: "FNC", dur: "9h 45min", stop: "1h15 layover in Porto", airline: "TAP Air Portugal" },
-  back: { date: "Sat, Jan 16, 2027", dep: "15:00", from: "FNC", arr: "21:35", to: "EWR", dur: "11h 35min", stop: "1h05 layover in Porto", airline: "TAP Air Portugal" },
+  back: { date: "Fri, Jan 15, 2027", dep: "15:00", from: "FNC", arr: "21:35", to: "EWR", dur: "11h 35min", stop: "1h05 layover in Porto", airline: "TAP Air Portugal" },
 };
 window.AIRPORT = { lat: 32.6979, lon: -16.7745, side: "S", pen: 0 };
 
@@ -194,7 +194,7 @@ window.RESTAURANTS = [
 ].map((r) => ({ ...r, link: gmaps(r.q) }));
 
 /* ---------------- DAYS ---------------- */
-// Built in app.js from the resort-nights switch (Jan 8 flight → Jan 16 flight home).
+// Built in app.js from the resort-nights switch (Jan 8 flight → Jan 15 flight home).
 window.FLIGHT_OUT = { name: "TAP Air Portugal · EWR → OPO → FNC", tag: "Departs 23:25 · lands Sat 14:10", img: ["tap_plane"], desc: "1h15 layover in Porto. Download offline Google Maps for Madeira before you go." };
 window.FLIGHT_HOME = { name: "FNC → OPO → EWR", tag: "Departs 15:00 · lands 21:35", img: ["airport"], desc: "Look out of the window as you take off from the runway on stilts." };
 

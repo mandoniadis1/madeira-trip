@@ -5,6 +5,17 @@
   delete state.stays.s3; // the old third stay was removed — the 3pm flight doesn't need an airport hotel
   // Nov 16: Madison chose Saccharum for 4 nights (4th night free), then Reid's (FHR) for the rest
   if ((state.v || 0) < 3) { state.split = 4; state.stays = { s1: "saccharum", s2: "reids" }; state.days = {}; state.v = 3; localStorage.setItem(KEY, JSON.stringify(state)); }
+  // Nov 16: flight home moved from Sat Jan 16 to Fri Jan 15 (one night fewer). The old last full day (index 7) goes away
+  // and the old departure day (index 8) becomes index 7.
+  if (state.v < 4) {
+    const days = {};
+    Object.entries(state.days || {}).forEach(([key, val]) => {
+      const i = +key.split(":")[0];
+      if (i === 7) return;
+      days[i === 8 ? key.replace(/^8:/, "7:") : key] = val;
+    });
+    state.days = days; state.v = 4; localStorage.setItem(KEY, JSON.stringify(state));
+  }
   const save = () => localStorage.setItem(KEY, JSON.stringify(state));
   const $ = (s, el = document) => el.querySelector(s);
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -23,12 +34,13 @@
   const picks = () => state.picks.map(expById).filter(Boolean);
 
   /* ================= days (built from the resort-nights switch) ================= */
-  const DATES = ["Fri · Jan 8", "Sat · Jan 9", "Sun · Jan 10", "Mon · Jan 11", "Tue · Jan 12", "Wed · Jan 13", "Thu · Jan 14", "Fri · Jan 15", "Sat · Jan 16"];
-  const SHORT = ["Jan 8", "Jan 9", "Jan 10", "Jan 11", "Jan 12", "Jan 13", "Jan 14", "Jan 15", "Jan 16"];
+  const DATES = ["Fri · Jan 8", "Sat · Jan 9", "Sun · Jan 10", "Mon · Jan 11", "Tue · Jan 12", "Wed · Jan 13", "Thu · Jan 14", "Fri · Jan 15"];
+  const SHORT = ["Jan 8", "Jan 9", "Jan 10", "Jan 11", "Jan 12", "Jan 13", "Jan 14", "Jan 15"];
   let DAYS = [];
   function buildDays() {
     const k = state.split; // resort nights (2 or 3)
     const move = 1 + k;
+    const last = DATES.length - 1; // departure day
     const s1Titles = ["Out exploring", "Another adventure", "One more day out"];
     const s2Titles = ["Adventure day", "Into the forest", "Wildcard day", "One more trail"];
     DAYS = DATES.map((date, i) => {
@@ -41,14 +53,14 @@
         blurb: "An excursion day from the resort, with a pool waiting when you get back." };
       if (i === move) return { date, title: "On to the next hotel", type: "move", from: "s1", to: "s2",
         blurb: "Check out and drive to your second hotel, with stops on the way. The extra time shows how far each stop takes you out of your way." };
-      if (i < 8) return { date, title: i === 7 ? "Last full day" : s2Titles[i - move - 1] || "Adventure day", type: "stay", stay: "s2",
+      if (i < last) return { date, title: i === last - 1 ? "Last full day" : s2Titles[i - move - 1] || "Adventure day", type: "stay", stay: "s2",
         blurb: "Choose a pick, and add a second one if it starts nearby. Rainy? Choose a forest levada and save the big views for a clear day." };
       return { date, title: "Fly home", type: "depart", stay: "s2", fixedEnd: FLIGHT_HOME,
         blurb: "FNC 15:00 → Porto → EWR 21:35. Return the car by about 12:45, so leave the hotel with time to spare." };
     });
-    const nights1 = k, nights2 = 7 - k;
+    const nights1 = k, nights2 = last - 1 - k;
     Object.assign(stayById("s1"), { dates: `Sat Jan 9 → ${DATES[move].replace(" ·", "")}`, nights: nights1 });
-    Object.assign(stayById("s2"), { dates: `${DATES[move].replace(" ·", "")} → Sat Jan 16`, nights: nights2 });
+    Object.assign(stayById("s2"), { dates: `${DATES[move].replace(" ·", "")} → Fri Jan 15`, nights: nights2 });
   }
 
   /* ================= drive-time estimate =================
@@ -235,7 +247,7 @@
     const hasPicks = state.picks.length > 0;
     $("#split").innerHTML = `
       <span>Resort nights</span>
-      ${[2, 3, 4].map((k) => `<button class="chip ${state.split === k ? "on" : ""}" data-split="${k}">${k} + ${7 - k} nights</button>`).join("")}`;
+      ${[2, 3, 4].map((k) => `<button class="chip ${state.split === k ? "on" : ""}" data-split="${k}">${k} + ${DATES.length - 2 - k} nights</button>`).join("")}`;
     $("#stays").innerHTML = STAYS.map((st) => {
       const chosen = state.stays[st.id];
       const ranked = HOTELS.map((h) => ({ h, fit: hotelFit(h, st.role) })).sort((x, y) => x.fit.score - y.fit.score);
@@ -713,7 +725,7 @@
       const k = +sp.dataset.split;
       if (k === state.split) return;
       // the move day shifts, so clear plans between arrival and departure
-      Object.keys(state.days).forEach((key) => { const i = +key.split(":")[0]; if (i >= 2 && i <= 7) delete state.days[key]; });
+      Object.keys(state.days).forEach((key) => { const i = +key.split(":")[0]; if (i >= 2 && i < DATES.length - 1) delete state.days[key]; });
       state.split = k; save();
       const y = scrollY; renderAll(); scrollTo({ top: y });
       return;
