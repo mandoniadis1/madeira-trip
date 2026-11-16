@@ -188,6 +188,9 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
   .tile { width: 210px; }
   .tile img, .tile.todo { height: 150px; }
   .flight + .flight { padding-left: 0; border-left: 0; }
+  .flight { min-width: 0; flex-basis: 100%; padding-right: 0; }
+  .hero-inner { min-width: 0; padding-inline: 20px; }
+  .hero-inner > *, .f-row { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 }
 
 /* theme toggle */
@@ -195,7 +198,16 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
 .theme-toggle:hover { border-color: var(--ink); }
 .theme-toggle .dot { width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--ink); background: linear-gradient(90deg, var(--ink) 50%, transparent 50%); }
 .tabs { position: sticky; }
-@media (max-width: 800px) { .tabs { justify-content: flex-start; padding-right: 130px; overflow-x: auto; } }
+.tab-links { display: contents; } /* desktop: links sit straight in the centered bar */
+@media (max-width: 800px) {
+  /* phones: links scroll in their own lane, the toggle is a small round button beside them */
+  .tabs { justify-content: space-between; align-items: center; gap: 10px; padding: 12px 12px 12px 16px; }
+  .tab-links { display: flex; gap: clamp(12px, 4vw, 22px); flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .tab-links::-webkit-scrollbar { display: none; }
+  .tab-links a { flex: none; font-size: 12.5px; letter-spacing: .12em; padding: 4px 0; }
+  .theme-toggle { position: static; transform: none; flex: none; width: 36px; height: 36px; padding: 0; justify-content: center; border-radius: 50%; }
+  .theme-toggle .label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}
 
 /* ---------- step I: experiences ---------- */
 .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 0 0 14px; }
@@ -222,7 +234,8 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
 .map-key small { color: var(--muted); font-size: 13px; }
 .map-key .m-house.suggested svg path { fill: rgba(29,27,24,.55); }
 .map-box { position: relative; }
-.map-empty { position: absolute; z-index: 500; left: 50%; top: 18px; transform: translateX(-50%); margin: 0; background: var(--paper); color: var(--ink); padding: 8px 18px; font: italic 18px var(--serif); border: 1px solid var(--line); white-space: nowrap; }
+.map-empty { position: absolute; z-index: 500; left: 50%; top: 18px; transform: translateX(-50%); margin: 0; background: var(--paper); color: var(--ink); padding: 8px 18px; font: italic 18px var(--serif); border: 1px solid var(--line); white-space: nowrap; max-width: calc(100% - 24px); }
+@media (max-width: 800px) { .map-empty { white-space: normal; text-align: center; width: max-content; } }
 .map-empty[hidden] { display: none; }
 /* map symbols (also used in the legend) */
 .m-icon { background: none; border: 0; }
