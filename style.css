@@ -328,3 +328,17 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
 .days-total { color: var(--muted); font-size: 15px; margin: 0; }
 .days-total b { color: var(--ink); font-weight: 500; }
 .day-drive { margin: 0 0 4px; font-size: 13px; text-transform: uppercase; letter-spacing: .2em; color: var(--accent); }
+
+/* ---------- IV. where to eat: one list, grouped by hotel ---------- */
+.dine-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0 56px; margin-top: 10px; }
+.dine-stay { margin: 0; font-size: 12.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); }
+.dine-col h3 { margin: 4px 0 8px; font: 500 30px var(--serif); }
+.dine-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.dine-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.dine-list a { border: 0; color: var(--ink); display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.dine-list a b { font: 500 21px var(--serif); }
+.dine-list a:hover b { color: var(--accent); }
+.dine-tag { font-size: 15px; color: var(--ink-soft); }
+.dine-time { flex: none; text-align: right; font-size: 15px; color: var(--ink); white-space: nowrap; }
+.dine-time small { display: block; font-size: 12.5px; color: var(--muted); }
+@media (max-width: 800px) { .dine-cols { grid-template-columns: 1fr; gap: 34px; } }

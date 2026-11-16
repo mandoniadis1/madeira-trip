@@ -170,15 +170,15 @@ window.STAYS = [
 
 /* ---------------- RESTAURANTS (Google Maps links, no photos) ---------------- */
 window.RESTAURANTS = [
-  { id: "william", name: "William", tag: "Michelin-starred · at Reid's Palace", lat: 32.6375, lon: -16.9285, q: "William Restaurant Reid's Palace Funchal" },
-  { id: "galloOro", name: "Il Gallo d'Oro", tag: "Michelin 2-star · The Cliff Bay", lat: 32.6365, lon: -16.933, q: "Il Gallo d'Oro Funchal" },
-  { id: "avista", name: "Avista", tag: "Michelin-starred, ocean terrace · Les Suites", lat: 32.6365, lon: -16.933, q: "Avista restaurant Les Suites at The Cliff Bay Funchal" },
-  { id: "desarma", name: "Desarma", tag: "Michelin-starred · top of Savoy Palace", lat: 32.64, lon: -16.9265, q: "Desarma restaurant Funchal" },
+  { id: "william", in: ["reids"], name: "William", tag: "Michelin-starred · at Reid's Palace", lat: 32.6375, lon: -16.9285, q: "William Restaurant Reid's Palace Funchal" },
+  { id: "galloOro", in: ["cliffbay"], name: "Il Gallo d'Oro", tag: "Michelin 2-star · The Cliff Bay", lat: 32.6365, lon: -16.933, q: "Il Gallo d'Oro Funchal" },
+  { id: "avista", in: ["cliffbay"], name: "Avista", tag: "Michelin-starred, ocean terrace · Les Suites", lat: 32.6365, lon: -16.933, q: "Avista restaurant Les Suites at The Cliff Bay Funchal" },
+  { id: "desarma", in: ["savoy", "reserve"], name: "Desarma", tag: "Michelin-starred · top of Savoy Palace", lat: 32.64, lon: -16.9265, q: "Desarma restaurant Funchal" },
   { id: "kampo", name: "Kampo", tag: "Chef Júlio Pereira, farm-to-table · Funchal", lat: 32.648, lon: -16.91, q: "Kampo restaurant Funchal" },
   { id: "akua", name: "Akua", tag: "Seafood & small plates · Old Town", lat: 32.649, lon: -16.903, q: "Akua restaurant Funchal" },
   { id: "gaviao", name: "Gavião Novo", tag: "Classic fish house · Old Town", lat: 32.6488, lon: -16.9025, q: "Gaviao Novo Funchal" },
   { id: "armazem", name: "Armazém do Sal", tag: "Cozy stone warehouse · Funchal", lat: 32.6485, lon: -16.909, q: "Armazem do Sal Funchal" },
-  { id: "galaxia", name: "Galaxia Skyfood", tag: "Rooftop at Savoy Palace", lat: 32.64, lon: -16.9265, q: "Galaxia Skyfood Savoy Palace Funchal" },
+  { id: "galaxia", in: ["savoy", "reserve"], name: "Galaxia Skyfood", tag: "Rooftop at Savoy Palace", lat: 32.64, lon: -16.9265, q: "Galaxia Skyfood Savoy Palace Funchal" },
   { id: "doca", name: "Doca do Cavacas", tag: "Grilled fish over lava pools · west Funchal", lat: 32.637, lon: -16.946, q: "Doca do Cavacas Funchal" },
   { id: "vilaPeixe", name: "Vila do Peixe", tag: "Pick-your-fish grill · Câmara de Lobos", lat: 32.649, lon: -16.976, q: "Vila do Peixe Camara de Lobos" },
   { id: "poncha", name: "Taberna da Poncha", tag: "The original poncha bar · Serra de Água", lat: 32.722, lon: -17.026, q: "Taberna da Poncha Serra de Agua" },

@@ -469,13 +469,39 @@
     return null;
   }
 
-  function dinnerOptions(d) {
-    const sid = d.type === "move" ? d.to : d.stay;
-    const h = stayHotel(sid);
-    const home = { id: "home", name: "Dinner at your hotel", tag: "No driving", link: "", note: "" };
-    if (!h) return [home, ...RESTAURANTS.slice(0, 6)];
-    const near = RESTAURANTS.map((r) => ({ ...r, m: drive(h, r) })).sort((a, b) => a.m - b.m).slice(0, 7);
-    return [home, ...near.map((r) => ({ ...r, note: fmt(r.m) }))];
+  /* ================= IV. where to eat =================
+     One list, no choosing: each restaurant sits under whichever of your hotels it's closer to, nearest first. */
+  function renderDining() {
+    const hs = STAYS.map((st) => ({ st, h: stayHotel(st.id) })).filter((x) => x.h);
+    if (!hs.length) {
+      $("#dining-list").innerHTML = `<p class="empty-note">Choose your hotels in section II and the restaurants will sort themselves by drive time from each.</p>`;
+      return;
+    }
+    const short = (name) => name.split(/[,(]/)[0].trim();
+    // "in your hotel" only when the restaurant is really inside it; very close places read "≈ 5 min", not "on site"
+    const when = (r, h, m) => ((r.in || []).includes(h.id) ? "In your hotel" : m === 0 ? "≈ 5 min" : fmt(m));
+    const cols = hs.map((x) => ({ ...x, list: [] }));
+    RESTAURANTS.forEach((r) => {
+      const times = cols.map((c) => drive(c.h, r));
+      const k = times.indexOf(Math.min(...times));
+      cols[k].list.push({ r, m: times[k], label: when(r, cols[k].h, times[k]),
+        other: cols.length > 1 ? cols.map((c, j) => (j === k ? null : { name: c.h.name, label: when(r, c.h, times[j]) })).filter(Boolean) : [] });
+    });
+    $("#dining-list").innerHTML = `<div class="dine-cols">${cols.map((c) => {
+      c.list.sort((a, b) => ((b.r.in || []).includes(c.h.id) - (a.r.in || []).includes(c.h.id)) || a.m - b.m);
+      return `
+        <div class="dine-col">
+          <p class="dine-stay">Stay ${c.st.n} · ${esc(c.st.dates)}</p>
+          <h3>Near ${esc(short(c.h.name))}</h3>
+          <ol class="dine-list">
+            ${c.list.length ? c.list.map(({ r, label, other }) => `
+              <li>
+                <a href="${r.link}" target="_blank" rel="noopener"><b>${esc(r.name)}</b><span class="dine-tag">${esc(r.tag)}</span></a>
+                <span class="dine-time">${label}${other.map((o) => `<small>${o.label} from ${esc(short(o.name))}</small>`).join("")}</span>
+              </li>`).join("") : `<li class="empty-note">Everything on the list is closer to your other hotel.</li>`}
+          </ol>
+        </div>`;
+    }).join("")}</div>`;
   }
 
   function optionCard(o, key, i, picked) {
@@ -545,7 +571,6 @@
         body += slotHtml(label, `day:${i}:day`, dayOptions(d), state.days[`${i}:day`], i, { hint });
         const also = alsoOptions(d, i);
         if (also.length) body += slotHtml("Second stop (optional)", `day:${i}:also`, also, state.days[`${i}:also`], i, { removable: true, count: "closest first" });
-        if (d.type !== "depart") body += slotHtml("Dinner nearby", `day:${i}:dinner`, dinnerOptions(d), state.days[`${i}:dinner`], i, { food: true, count: "closest first" });
       }
       if (d.fixedEnd) body += `<div class="slot"><div class="slot-head"><h4>Then</h4></div><div class="grid picked">${fixedCard(d.fixedEnd)}</div></div>`;
       const t = totals[i];
@@ -564,7 +589,7 @@
     if (!state.picks.length) { alert("Add some experiences in section I first."); return; }
     if (!h1 || !h2) { alert("Choose both hotels first, so the plan knows where you're sleeping."); return; }
     const hasPlans = DAYS.some((d, i) => ["stay", "move"].includes(d.type) && state.days[`${i}:day`]);
-    if (hasPlans && !confirm("Replace your current day plans (not dinners) with the least-driving plan?")) return;
+    if (hasPlans && !confirm("Replace your current day plans with the least-driving plan?")) return;
     const plan = planTrip(h1, h2);
     plan.assign.forEach(({ kind, i, list }) => {
       delete state.days[`${i}:also`];
@@ -595,7 +620,6 @@
       if (d.fixed) tiles.push({ img: d.fixed.img[0], cap: d.fixed.name });
       const sid = d.type === "move" ? d.to : d.stay;
       const h = stayHotel(sid);
-      const meals = [];
       if (d.type !== "fixed") {
         total++;
         const v = state.days[`${i}:day`];
@@ -606,12 +630,6 @@
           const a = expById(state.days[`${i}:also`]);
           if (a) resolveImgs(a.img).slice(0, 2).forEach((im, k) => tiles.push({ img: im, cap: k ? "" : a.name }));
         } else tiles.push({ todo: d.type === "move" ? "On the way" : "The day" });
-        if (d.type !== "depart") {
-          total++;
-          const fv = state.days[`${i}:dinner`];
-          const r = fv && dinnerOptions(d).find((x) => x.id === fv);
-          if (r) { done++; meals.push(r); }
-        }
       }
       if (h && (d.type === "arrive" || d.type === "move")) tiles.push({ img: h.imgs[0], cap: "Check in: " + h.name, hotel: true });
       if (d.fixedEnd) tiles.push({ img: d.fixedEnd.img[0], cap: d.fixedEnd.name });
@@ -620,7 +638,6 @@
         <div class="story-day">
           <div class="story-date"><b>${d.date}</b><span>${d.title}</span>
             ${h ? `<em><i>Stay</i>${esc(h.name)}</em>` : ""}
-            ${meals.map((m) => `<em><i>Dinner</i>${m.link ? `<a href="${m.link}" target="_blank" rel="noopener">${esc(m.name)}</a>` : esc(m.name)}</em>`).join("")}
             ${t !== null && d.type !== "fixed" ? `<em><i>Driving</i>${t ? fmt(t) : "none"}</em>` : ""}
           </div>
           <div class="story-strip">
@@ -647,13 +664,12 @@
     const dayItems = DAYS.map((d, i) => {
       if (d.type === "fixed") return { id: "day-" + i, label: d.date, done: true, note: d.title };
       const day = !!state.days[`${i}:day`];
-      const dinner = d.type === "depart" || !!state.days[`${i}:dinner`];
-      const missing = [!day && (d.type === "move" ? "stop" : "plan"), !dinner && "dinner"].filter(Boolean);
-      return { id: "day-" + i, label: d.date, done: !missing.length, note: missing.length ? "needs " + missing.join(" & ") : d.title };
+      return { id: "day-" + i, label: d.date, done: day, note: day ? d.title : "needs a " + (d.type === "move" ? "stop" : "plan") };
     });
     items.push({ id: "days", label: "III. Days", done: dayItems.every((x) => x.done), top: true }, ...dayItems);
+    items.push({ id: "dining", label: "IV. Where to eat", done: STAYS.every((s) => state.stays[s.id]), note: "sorted by your hotels", top: true });
     const allDone = items.every((x) => x.done);
-    items.push({ id: "story", label: "IV. Journey", done: allDone, note: allDone ? "complete" : "fills in as you choose", top: true });
+    items.push({ id: "story", label: "V. Journey", done: allDone, note: allDone ? "complete" : "fills in as you choose", top: true });
     return items;
   }
   function renderToc() {
@@ -705,7 +721,7 @@
   $("#fab-toc").addEventListener("click", () => { document.body.classList.toggle("rail-open-toc"); document.body.classList.remove("rail-open-notes"); });
   $("#fab-notes").addEventListener("click", () => { document.body.classList.toggle("rail-open-notes"); document.body.classList.remove("rail-open-toc"); if (document.body.classList.contains("rail-open-notes")) notesEl.focus(); });
 
-  const renderAll = () => { gid = 0; buildDays(); renderExperiences(); renderStays(); renderMap(); renderDays(); renderStory(); renderToc(); };
+  const renderAll = () => { gid = 0; buildDays(); renderExperiences(); renderStays(); renderMap(); renderDays(); renderDining(); renderStory(); renderToc(); };
 
   /* ================= events ================= */
   document.addEventListener("click", (e) => {
