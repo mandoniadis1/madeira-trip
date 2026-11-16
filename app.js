@@ -270,7 +270,7 @@
   function hotelCard(h, fit, st, rank, chosen) {
     const elsewhere = STAYS.filter((s) => s.id !== st.id && state.stays[s.id] === h.id).map((s) => "Stay " + s.n);
     const best = !chosen && rank < 2 && (state.picks.length || st.role === "resort");
-    const closest = fit.drives.slice(0, chosen ? 10 : 4);
+    const closest = fit.drives; // every pick, closest first (the list scrolls)
     return `
       <article class="card hotel ${chosen ? "chosen" : ""}" id="hc-${st.id}-${h.id}" data-pick="stay:${st.id}" data-val="${h.id}">
         ${gallery(h.imgs)}
@@ -292,7 +292,7 @@
             <dt>Airport</dt><dd>${fmt(fit.air)}</dd>
             ${state.picks.length ? `<dt>Your picks</dt><dd>avg ${fmt(fit.a)}</dd>` : ""}
           </dl>
-          ${closest.length ? `<ul class="drives">${closest.map((d) => `<li><span>${esc(d.p.name)}</span><span>${fmt(d.m)}</span></li>`).join("")}</ul>` : ""}
+          ${closest.length ? `<p class="drives-head">Drive to your picks · ${closest.length}${closest.length > 5 ? " · scroll for more" : ""}</p><ul class="drives">${closest.map((d) => `<li><span>${esc(d.p.name)}</span><span>${fmt(d.m)}</span></li>`).join("")}</ul>` : ""}
           <div class="links">${mapLink(h.link, "Visit the hotel")}${chosen ? "" : `<button class="pick-btn">Choose</button>`}</div>
         </div>
       </article>`;

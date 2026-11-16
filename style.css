@@ -253,7 +253,9 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
 .rain.r2 { color: #a07a2c; }
 .rain.r3 { color: var(--accent); }
 :root[data-theme="night"] .rain.r0, :root[data-theme="night"] .rain.r1 { color: #8fbf86; }
-.drives { list-style: none; margin: 10px 0 0; padding: 10px 0 0; border-top: 1px solid var(--line); font-size: 14.5px; }
+.card .drives-head, .drives-head { margin: 12px 0 0; line-height: 1.4; padding-top: 10px; border-top: 1px solid var(--line); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.drives { list-style: none; margin: 6px 0 0; padding: 0 6px 0 0; font-size: 14.5px; max-height: 9.6em; overflow-y: auto; overscroll-behavior: contain;
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
 .drives li { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; color: var(--ink-soft); }
 .drives li span:last-child { white-space: nowrap; color: var(--muted); }
 #hotels .tips { margin-top: 30px; }
