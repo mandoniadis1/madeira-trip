@@ -168,25 +168,26 @@ window.STAYS = [
     why: "One more Amex FHR hotel to finish. FHR comes first, then lowest total trip driving. Your 3pm flight means no airport hotel is needed." },
 ];
 
-/* ---------------- "Pick for me": a hand-chosen set built around the big lush hikes ---------------- */
-// Both big hikes are done from the Saccharum side so Reid's gets a full day with no car (spa, pools, tea).
-// Day indexes with the 4 + 2 split: 2 = Jan 10, 3 = Jan 11, 4 = Jan 12, 5 = Jan 13 (move), 6 = Jan 14, 7 = Jan 15 (fly).
-// Checked against the site's drive estimates. Jan 14 counts the short Reid's → market hop, which you can walk or take a taxi for.
+/* ---------------- "Pick for me": Madison's picks, Funchal-based, switching hotels halfway ---------------- */
+// Savoy Palace 3 nights → Reid's 3 nights (5 min apart). One trip west; the big central/north hikes are 30–45 min from Funchal.
+// Day indexes with the 3 + 3 split: 1 = Jan 9, 2 = Jan 10 (Sun), 3 = Jan 11, 4 = Jan 12 (switch hotels), 5 = Jan 13, 6 = Jan 14 (Thu), 7 = Jan 15 (fly).
+// The market (Mercado dos Lavradores) is closed on Sundays, so it's on Thursday Jan 14.
 window.SUGGESTED = {
-  picks: ["pr6", "fanal", "pr1", "pr9", "funchal", "tea"],
-  stays: { s1: "saccharum", s2: "reids" },
-  split: 4,
+  picks: ["pr6", "furado", "rei", "fanal", "cedros", "pr1", "pr8", "funchal", "tea", "pr9"],
+  stays: { s1: "savoy", s2: "reids" },
+  split: 3,
   days: { "1:day": "a_settle", "2:day": "rest", "3:day": "pr6", "3:also": "fanal", "4:day": "pr1", "5:day": "pr9", "6:day": "funchal", "6:also": "tea", "7:day": "d_brekkie" },
-  title: "My picks for you: three big hikes, the fairy-tale forest, and a slow day in Funchal with afternoon tea",
+  title: "Funchal the whole time: three nights at the Savoy, then three at Reid's",
   lines: [
-    "<b>Jan 10 · Lazy day at Saccharum</b>: the spa and pools, no car.",
-    "<b>Jan 11 · 25 Fontes & Risco + Fanal</b>: the lushest big hike on the west plateau (about 25 min away), then the mossy laurel trees about 30 min on. Both are fine in mist, and Fanal is even better in fog.",
-    "<b>Jan 12 · Pico do Arieiro → Pico Ruivo</b>: the famous ridge walk, about 50 min from Saccharum. It needs a clear morning, so if Jan 12 looks cloudy, swap it with Jan 11. You're back at Saccharum's spa that evening.",
-    "<b>Jan 13 · Caldeirão Verde</b> on the way to Reid's: 4–5 hrs, with tunnels, so bring a headlamp. Start by 9 and you'll be at Reid's mid-afternoon for the pools and tea. Keep your bags in the trunk, out of sight, at the trailhead.",
-    "<b>Jan 14 · Funchal & afternoon tea, no car needed</b>: the market (Mercado dos Lavradores) and Old Town in the morning, when the market is busiest. It's about 2 km from Reid's, a seafront walk or a quick taxi. Then the spa and saltwater pools at midday, and afternoon tea on the Reid's terrace around 3:30. Book the tea ahead. Old Town or Desarma for dinner.",
+    "<b>Jan 9 · Land, check in to the Savoy</b>: 25 min from the airport. Drinks at Galaxia on the rooftop at sunset.",
+    "<b>Jan 10 (Sun) · Savoy spa day</b>: Laurea Spa, the pools, and a stroll through the Old Town in the evening. The market is closed on Sundays, so it moves to Thursday.",
+    "<b>Jan 11 · West, once: 25 Fontes & Risco + Fanal</b>: 45 min out to the plateau, then the mossy laurel trees, and 55 min back. It's your longest drive (≈ 2 h 15 in total), and both are fine in mist.",
+    "<b>Jan 12 · Switch to Reid's + Pico do Arieiro → Pico Ruivo</b>: drop your bags at Reid's first (5 min away), then 35 min up to Arieiro. It needs a clear morning, so swap it with Jan 11 or 13 if the peaks are in cloud.",
+    "<b>Jan 13 · Caldeirão Verde</b>: the big lush one, 4–5 hrs with tunnels (bring a headlamp), 45 min from Reid's.",
+    "<b>Jan 14 (Thu) · Market, spa & afternoon tea, no car</b>: the Mercado dos Lavradores and Old Town in the morning (a seafront walk or a quick taxi), the Reid's pools and spa at midday, and afternoon tea on the terrace around 3:30. Book the tea ahead.",
     "<b>Jan 15 · Slow breakfast</b>, then 25 min to the airport for the 3pm flight.",
   ],
-  why: "Why these? With six nights, a lazy first day and a slow last day in Funchal, you have three days out, and each one gets a big hike. Seixal beach didn't fit. The days below are already filled in, and the Journey shows it in pictures.",
+  why: "Left for another time: Levada do Furado, Levada do Rei, São Lourenço and Levada dos Cedros. They're still in your picks, so you can swap any of them in (Furado and Rei are both 30–45 min from Reid's). Total driving is about 6 hours. The west day is the only long one.",
 };
 
 /* ---------------- RESTAURANTS (Google Maps links, no photos) ---------------- */
