@@ -494,24 +494,33 @@
     }
     const short = (name) => name.split(/[,(]/)[0].trim();
     // "in your hotel" only when the restaurant is really inside it; very close places read "≈ 5 min", not "on site"
-    const when = (r, h, m) => ((r.in || []).includes(h.id) ? "In your hotel" : m === 0 ? "≈ 5 min" : fmt(m));
-    const cols = hs.map((x) => ({ ...x, list: [] }));
+    const inIt = (r, h) => (r.in || []).includes(h.id);
+    const when = (r, h, m) => (inIt(r, h) ? "In your hotel" : m === 0 ? "≈ 5 min" : fmt(m));
+    // two hotels within ~10 min of each other (e.g. Savoy + Reid's): one shared list, not an arbitrary split
+    const together = hs.length === 2 && drive(hs[0].h, hs[1].h) <= 10;
+    const cols = together
+      ? [{ hs, title: `Near ${hs.map((x) => short(x.h.name)).join(" & ")}`, sub: "Your whole stay · they're minutes apart", list: [] }]
+      : hs.map((x) => ({ hs: [x], title: `Near ${short(x.h.name)}`, sub: `Stay ${x.st.n} · ${x.st.dates}`, list: [] }));
     RESTAURANTS.forEach((r) => {
-      const times = cols.map((c) => drive(c.h, r));
-      const k = times.indexOf(Math.min(...times));
-      cols[k].list.push({ r, m: times[k], label: when(r, cols[k].h, times[k]),
-        other: cols.length > 1 ? cols.map((c, j) => (j === k ? null : { name: c.h.name, label: when(r, c.h, times[j]) })).filter(Boolean) : [] });
+      const per = cols.map((c) => {
+        const opts = c.hs.map((x) => ({ h: x.h, m: drive(x.h, r) })).sort((a, b) => inIt(r, b.h) - inIt(r, a.h) || a.m - b.m);
+        return opts[0];
+      });
+      const k = per.reduce((bi, x, i) => (x.m < per[bi].m ? i : bi), 0);
+      cols[k].list.push({ r, m: inIt(r, per[k].h) ? -1 : per[k].m, label: when(r, per[k].h, per[k].m),
+        other: cols.length > 1 ? per.map((x, j) => (j === k ? null : { name: x.h.name, label: when(r, x.h, x.m) })).filter(Boolean) : [] });
     });
-    $("#dining-list").innerHTML = `<div class="dine-cols">${cols.map((c) => {
-      c.list.sort((a, b) => ((b.r.in || []).includes(c.h.id) - (a.r.in || []).includes(c.h.id)) || a.m - b.m);
+    $("#dining-list").innerHTML = `<p class="dine-key"><span class="mk mich">★ Michelin</span> stars · <span class="mk mich">Bib Gourmand</span> good value · <span class="mk mich">Michelin Guide</span> recommended · <span class="mk price">$</span> under ~€25 <span class="mk price">$$</span> ~€25–60 <span class="mk price">$$$</span> €60+ per person</p><div class="dine-cols">${cols.map((c) => {
+      c.list.sort((a, b) => a.m - b.m);
       return `
         <div class="dine-col">
-          <p class="dine-stay">Stay ${c.st.n} · ${esc(c.st.dates)}</p>
-          <h3>Near ${esc(short(c.h.name))}</h3>
+          <p class="dine-stay">${esc(c.sub)}</p>
+          <h3>${esc(c.title)}</h3>
           <ol class="dine-list">
             ${c.list.length ? c.list.map(({ r, label, other }) => `
               <li>
-                <a href="${r.link}" target="_blank" rel="noopener"><b>${esc(r.name)}</b><span class="dine-tag">${esc(r.tag)}</span></a>
+                <a href="${r.link}" target="_blank" rel="noopener"><b>${esc(r.name)}</b><span class="dine-tag">${esc(r.tag)}</span>
+                  <span class="dine-marks">${r.mich ? `<span class="mk mich">${r.mich.includes("star") ? "★".repeat(parseInt(r.mich)) + " Michelin" : r.mich === "Bib Gourmand" ? "Michelin Bib Gourmand" : "Michelin Guide"}</span>` : ""}<span class="mk price" title="Rough dinner cost per person">${"$".repeat(r.price || 2)}</span>${r.hotel ? `<span class="mk hotel">In ${esc(r.hotel)}</span>` : ""}</span></a>
                 <span class="dine-time">${label}${other.map((o) => `<small>${o.label} from ${esc(short(o.name))}</small>`).join("")}</span>
               </li>`).join("") : `<li class="empty-note">Everything on the list is closer to your other hotel.</li>`}
           </ol>

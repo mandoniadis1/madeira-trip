@@ -191,28 +191,30 @@ window.SUGGESTED = {
 };
 
 /* ---------------- RESTAURANTS (Google Maps links, no photos) ---------------- */
+// mich: Michelin Guide status, checked Nov 2026 against the 2025/26 guide (stars: Il Gallo d'Oro 2, William 1, Desarma 1;
+// Avista = Bib Gourmand; Ákua and Armazém do Sal = recommended). price: rough dinner cost per person, 1 = $ … 3 = $$$.
 window.RESTAURANTS = [
-  { id: "william", in: ["reids"], name: "William", tag: "Michelin-starred · at Reid's Palace", lat: 32.6375, lon: -16.9285, q: "William Restaurant Reid's Palace Funchal" },
-  { id: "galloOro", in: ["cliffbay"], name: "Il Gallo d'Oro", tag: "Michelin 2-star · The Cliff Bay", lat: 32.6365, lon: -16.933, q: "Il Gallo d'Oro Funchal" },
-  { id: "avista", in: ["cliffbay"], name: "Avista", tag: "Michelin-starred, ocean terrace · Les Suites", lat: 32.6365, lon: -16.933, q: "Avista restaurant Les Suites at The Cliff Bay Funchal" },
-  { id: "desarma", in: ["savoy", "reserve"], name: "Desarma", tag: "Michelin-starred · top of Savoy Palace", lat: 32.64, lon: -16.9265, q: "Desarma restaurant Funchal" },
-  { id: "kampo", name: "Kampo", tag: "Chef Júlio Pereira, farm-to-table · Funchal", lat: 32.648, lon: -16.91, q: "Kampo restaurant Funchal" },
-  { id: "akua", name: "Akua", tag: "Seafood & small plates · Old Town", lat: 32.649, lon: -16.903, q: "Akua restaurant Funchal" },
-  { id: "gaviao", name: "Gavião Novo", tag: "Classic fish house · Old Town", lat: 32.6488, lon: -16.9025, q: "Gaviao Novo Funchal" },
-  { id: "armazem", name: "Armazém do Sal", tag: "Cozy stone warehouse · Funchal", lat: 32.6485, lon: -16.909, q: "Armazem do Sal Funchal" },
-  { id: "galaxia", in: ["savoy", "reserve"], name: "Galaxia Skyfood", tag: "Rooftop at Savoy Palace", lat: 32.64, lon: -16.9265, q: "Galaxia Skyfood Savoy Palace Funchal" },
-  { id: "doca", name: "Doca do Cavacas", tag: "Grilled fish over lava pools · west Funchal", lat: 32.637, lon: -16.946, q: "Doca do Cavacas Funchal" },
-  { id: "vilaPeixe", name: "Vila do Peixe", tag: "Pick-your-fish grill · Câmara de Lobos", lat: 32.649, lon: -16.976, q: "Vila do Peixe Camara de Lobos" },
-  { id: "poncha", name: "Taberna da Poncha", tag: "The original poncha bar · Serra de Água", lat: 32.722, lon: -17.026, q: "Taberna da Poncha Serra de Agua" },
-  { id: "solPoente", name: "Sol Poente", tag: "Sunset on the rocks · Ponta do Sol", lat: 32.68, lon: -17.1, q: "Sol Poente Ponta do Sol Madeira" },
-  { id: "calhetas", name: "O Calhetas", tag: "Seafood on the water · Calheta", lat: 32.72, lon: -17.176, q: "Restaurante O Calhetas Calheta Madeira" },
-  { id: "cachalote", name: "Cachalote", tag: "Built into the lava rocks · Porto Moniz", lat: 32.867, lon: -17.17, q: "Restaurante Cachalote Porto Moniz" },
-  { id: "quebramar", name: "Quebra Mar", tag: "Seafront, simple & local · São Vicente", lat: 32.803, lon: -17.045, q: "Restaurante Quebra Mar Sao Vicente Madeira" },
-  { id: "furaoRest", name: "Quinta do Furão", tag: "Regional tasting, vineyard views · Santana", lat: 32.818, lon: -16.867, q: "Quinta do Furao restaurant Santana" },
-  { id: "cantinho", name: "Cantinho da Serra", tag: "Wood stove & stews · Santana", lat: 32.795, lon: -16.885, q: "Cantinho da Serra Santana Madeira" },
-  { id: "ribeiroFrio", name: "Restaurante Ribeiro Frio", tag: "Fresh trout in the forest", lat: 32.735, lon: -16.885, q: "Restaurante Ribeiro Frio Madeira" },
-  { id: "amarelo", name: "Amarelo", tag: "Fish & seafood by the harbor · Caniçal", lat: 32.738, lon: -16.737, q: "Restaurante Amarelo Canical" },
-  { id: "mercadoVelho", name: "Mercado Velho", tag: "Garden terrace · Machico", lat: 32.718, lon: -16.767, q: "Mercado Velho Machico" },
+  { id: "william", in: ["reids"], name: "William", tag: "Fine dining with ocean views", mich: "1 star", price: 3, hotel: "Reid's Palace", lat: 32.6375, lon: -16.9285, q: "William Restaurant Reid's Palace Funchal" },
+  { id: "galloOro", in: ["cliffbay"], name: "Il Gallo d'Oro", tag: "Chef Benoît Sinthon's tasting menus", mich: "2 stars", price: 3, hotel: "The Cliff Bay", lat: 32.6365, lon: -16.933, q: "Il Gallo d'Oro Funchal" },
+  { id: "avista", in: ["cliffbay"], name: "Avista", tag: "Ocean terrace, modern cooking", mich: "Bib Gourmand", price: 2, hotel: "Les Suites at The Cliff Bay", lat: 32.6365, lon: -16.933, q: "Avista restaurant Les Suites at The Cliff Bay Funchal" },
+  { id: "desarma", in: ["savoy", "reserve"], name: "Desarma", tag: "Rooftop tasting menus, top of the Savoy", mich: "1 star", price: 3, hotel: "Savoy Palace", lat: 32.64, lon: -16.9265, q: "Desarma restaurant Funchal" },
+  { id: "kampo", name: "Kampo", tag: "Chef Júlio Pereira, farm-to-table · Funchal", mich: "", price: 2, hotel: "", lat: 32.648, lon: -16.91, q: "Kampo restaurant Funchal" },
+  { id: "akua", name: "Akua", tag: "Seafood & small plates · Old Town", mich: "Recommended", price: 2, hotel: "", lat: 32.649, lon: -16.903, q: "Akua restaurant Funchal" },
+  { id: "gaviao", name: "Gavião Novo", tag: "Classic fish house · Old Town", mich: "", price: 2, hotel: "", lat: 32.6488, lon: -16.9025, q: "Gaviao Novo Funchal" },
+  { id: "armazem", name: "Armazém do Sal", tag: "Cozy stone warehouse · Funchal", mich: "Recommended", price: 2, hotel: "", lat: 32.6485, lon: -16.909, q: "Armazem do Sal Funchal" },
+  { id: "galaxia", in: ["savoy", "reserve"], name: "Galaxia Skyfood", tag: "Rooftop bar & restaurant, top of the Savoy", mich: "", price: 3, hotel: "Savoy Palace", lat: 32.64, lon: -16.9265, q: "Galaxia Skyfood Savoy Palace Funchal" },
+  { id: "doca", name: "Doca do Cavacas", tag: "Grilled fish over lava pools · west Funchal", mich: "", price: 2, hotel: "", lat: 32.637, lon: -16.946, q: "Doca do Cavacas Funchal" },
+  { id: "vilaPeixe", name: "Vila do Peixe", tag: "Pick-your-fish grill · Câmara de Lobos", mich: "", price: 2, hotel: "", lat: 32.649, lon: -16.976, q: "Vila do Peixe Camara de Lobos" },
+  { id: "poncha", name: "Taberna da Poncha", tag: "The original poncha bar · Serra de Água", mich: "", price: 1, hotel: "", lat: 32.722, lon: -17.026, q: "Taberna da Poncha Serra de Agua" },
+  { id: "solPoente", name: "Sol Poente", tag: "Sunset on the rocks · Ponta do Sol", mich: "", price: 2, hotel: "", lat: 32.68, lon: -17.1, q: "Sol Poente Ponta do Sol Madeira" },
+  { id: "calhetas", name: "O Calhetas", tag: "Seafood on the water · Calheta", mich: "", price: 2, hotel: "", lat: 32.72, lon: -17.176, q: "Restaurante O Calhetas Calheta Madeira" },
+  { id: "cachalote", name: "Cachalote", tag: "Built into the lava rocks · Porto Moniz", mich: "", price: 2, hotel: "", lat: 32.867, lon: -17.17, q: "Restaurante Cachalote Porto Moniz" },
+  { id: "quebramar", name: "Quebra Mar", tag: "Seafront, simple & local · São Vicente", mich: "", price: 1, hotel: "", lat: 32.803, lon: -17.045, q: "Restaurante Quebra Mar Sao Vicente Madeira" },
+  { id: "furaoRest", name: "Quinta do Furão", tag: "Regional tasting, vineyard views · Santana", mich: "", price: 2, hotel: "Quinta do Furão", lat: 32.818, lon: -16.867, q: "Quinta do Furao restaurant Santana" },
+  { id: "cantinho", name: "Cantinho da Serra", tag: "Wood stove & stews · Santana", mich: "", price: 1, hotel: "", lat: 32.795, lon: -16.885, q: "Cantinho da Serra Santana Madeira" },
+  { id: "ribeiroFrio", name: "Restaurante Ribeiro Frio", tag: "Fresh trout in the forest", mich: "", price: 1, hotel: "", lat: 32.735, lon: -16.885, q: "Restaurante Ribeiro Frio Madeira" },
+  { id: "amarelo", name: "Amarelo", tag: "Fish & seafood by the harbor · Caniçal", mich: "", price: 1, hotel: "", lat: 32.738, lon: -16.737, q: "Restaurante Amarelo Canical" },
+  { id: "mercadoVelho", name: "Mercado Velho", tag: "Garden terrace · Machico", mich: "", price: 1, hotel: "", lat: 32.718, lon: -16.767, q: "Mercado Velho Machico" },
 ].map((r) => ({ ...r, link: gmaps(r.q) }));
 
 /* ---------------- DAYS ---------------- */

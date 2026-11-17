@@ -367,3 +367,10 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
 .suggest-actions a.pick-btn { border-bottom: 0; text-decoration: none; display: inline-block; }
 @media (max-width: 800px) { .suggest { padding: 18px; } .suggest h3 { font-size: 24px; } }
 .suggest-stale { margin: 0 0 14px; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--accent); display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.dine-marks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 5px; }
+.mk { font: 400 11.5px var(--sans); letter-spacing: .1em; text-transform: uppercase; padding: 2px 7px; border: 1px solid var(--line); color: var(--ink-soft); white-space: nowrap; }
+.mk.mich { border-color: var(--accent); color: var(--accent); }
+.mk.price { letter-spacing: .05em; color: var(--ink); }
+.mk.hotel { font-style: normal; }
+.dine-key { overflow-wrap: anywhere; font-size: 14px; color: var(--muted); line-height: 2.1; margin: 0 0 18px; }
+.dine-key .mk { margin-right: 2px; }
