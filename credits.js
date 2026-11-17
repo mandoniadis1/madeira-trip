@@ -4,9 +4,74 @@ window.CREDITS = {
   "by": "Richard Bartz",
   "lic": "CC BY-SA 3.0"
  },
+ "albatroz_h1": {
+  "src": "https://www.albatrozhotel.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "albatroz_h2": {
+  "src": "https://www.albatrozhotel.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "albatroz_h3": {
+  "src": "https://www.albatrozhotel.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "alecrim": {
+  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Alecrim_creek_(38095371001).jpg",
+  "by": "VillageHero from Ulm, Germany",
+  "lic": "CC BY-SA 2.0"
+ },
+ "alecrim_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Madre_da_Levada_do_Alecrim_Madeira.jpg",
+  "by": "Rudolphu",
+  "lic": "CC BY-SA 4.0"
+ },
+ "alecrim_3": {
+  "src": "https://commons.wikimedia.org/wiki/File:Madeira-Paul_da_Serra-Rabacal-Levada_do_Alecrim_(PR_6-2)-48ASD.jpg",
+  "by": "Asurnipal",
+  "lic": "CC BY-SA 4.0"
+ },
+ "alecrim_4": {
+  "src": "https://commons.wikimedia.org/wiki/File:Madeira-Paul_da_Serra-Rabacal-Levada_do_Alecrim_(PR_6-2)-28ASD.jpg",
+  "by": "Asurnipal",
+  "lic": "CC BY-SA 4.0"
+ },
+ "aquanatura_h1": {
+  "src": "https://www.aquanaturamadeira.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "aquanatura_h2": {
+  "src": "https://www.aquanaturamadeira.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "aquanatura_h3": {
+  "src": "https://www.aquanaturamadeira.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
  "balcoes": {
   "src": "https://commons.wikimedia.org/wiki/File:Nogueira_valley_view_from_Balc%C3%B5es,_S%C3%A3o_Roque_do_Faial,_Santana,_Madeira,_2023_May.jpg",
   "by": "Ximonic (Simo R\u00e4s\u00e4nen)",
+  "lic": "CC BY-SA 4.0"
+ },
+ "balcoes_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Madeira_levada_Ribeiro_Frio_Balc%C3%B5es_2016_5.jpg",
+  "by": "Karelj",
+  "lic": "CC BY-SA 4.0"
+ },
+ "balcoes_3": {
+  "src": "https://commons.wikimedia.org/wiki/File:Madeira_levada_Ribeiro_Frio_Balc%C3%B5es_2016_4.jpg",
+  "by": "Karelj",
+  "lic": "CC BY-SA 4.0"
+ },
+ "balcoes_4": {
+  "src": "https://commons.wikimedia.org/wiki/File:Ribeiro_Frio_(Madeira,_Portugal),_Levada_zur_Forellenzucht_--_2025_--_1510.jpg",
+  "by": "Dietmar Rabich",
   "lic": "CC BY-SA 4.0"
  },
  "blandys": {
@@ -34,15 +99,90 @@ window.CREDITS = {
   "by": "Josep M. Gracia",
   "lic": "CC BY-SA 4.0"
  },
+ "caldeirao_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Caldeir%C3%A3o_Verde,_Madeira_-_Aug_2012_-_05.jpg",
+  "by": "cudi",
+  "lic": "CC BY 2.0"
+ },
+ "caldeirao_3": {
+  "src": "https://commons.wikimedia.org/wiki/File:LCV_-_Waterfall_along_Levada_do_Caldeir%C3%A3o_Verde,_Madeira,_2012.jpg",
+  "by": "Josep M. Gracia",
+  "lic": "CC BY-SA 4.0"
+ },
+ "caldeirao_4": {
+  "src": "https://commons.wikimedia.org/wiki/File:Levada_Caldeirao_Verde_tunnel_2_(37387700974).jpg",
+  "by": "VillageHero from Ulm, Germany",
+  "lic": "CC BY-SA 2.0"
+ },
  "camara_lobos": {
   "src": "https://commons.wikimedia.org/wiki/File:C%C3%A2mara_de_Lobos_(Madeira,_Portugal),_Ortsansicht_--_2025_--_1883.jpg",
   "by": "Dietmar Rabich",
+  "lic": "CC BY-SA 4.0"
+ },
+ "casabranca_h1": {
+  "src": "https://www.quintacasabranca.pt/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "casabranca_h2": {
+  "src": "https://www.quintacasabranca.pt/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "casabranca_h3": {
+  "src": "https://www.quintacasabranca.pt/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "castanheiro_h1": {
+  "src": "https://www.castanheiroboutiquehotel.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "castanheiro_h2": {
+  "src": "https://www.castanheiroboutiquehotel.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "castanheiro_h3": {
+  "src": "https://www.castanheiroboutiquehotel.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "castanheiro_h4": {
+  "src": "https://www.castanheiroboutiquehotel.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "cedros": {
+  "src": "https://commons.wikimedia.org/wiki/File:Verlauf_der_Levada_dos_Cedros.jpg",
+  "by": "Rudolphu",
+  "lic": "CC BY-SA 4.0"
+ },
+ "cedros_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Fanal_(Madeira,_Portugal),_Lorbeerwald_--_2025_--_1527.jpg",
+  "by": "Dietmar Rabich",
+  "lic": "CC BY-SA 4.0"
+ },
+ "chao_ribeira": {
+  "src": "https://commons.wikimedia.org/wiki/File:Ch%C3%A3o_da_Ribeira,_Madeira_-_2021-07-01_-_IMG_4933.jpg",
+  "by": "Paulo SP/ Wikimedia",
   "lic": "CC BY-SA 4.0"
  },
  "cliffbay": {
   "src": "https://commons.wikimedia.org/wiki/File:The_grand_Cliff_Bay_Hotel_in_Funchal,_Madeira_Island,_Portugal.jpg",
   "by": "uggboy",
   "lic": "CC BY 2.0"
+ },
+ "cliffbay_h1": {
+  "src": "https://www.portobay.com/en/hotels/madeira-hotels/les-suites-at-the-cliff-bay/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "cliffbay_h2": {
+  "src": "https://www.portobay.com/en/hotels/madeira-hotels/the-cliff-bay/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
  },
  "curral": {
   "src": "https://commons.wikimedia.org/wiki/File:Vista_de_Curral_das_Freiras,_Madeira,_Portugal,_2019-05-30,_DD_100.jpg",
@@ -54,8 +194,33 @@ window.CREDITS = {
   "by": "Asurnipal",
   "lic": "CC BY-SA 4.0"
  },
+ "dona_beja": {
+  "src": "https://commons.wikimedia.org/wiki/File:Lagoa_da_Dona_Beja.jpg",
+  "by": "Tiia Monto",
+  "lic": "CC BY 4.0"
+ },
+ "estalagem_h1": {
+  "src": "https://www.pontadosol.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
  "fanal": {
   "src": "https://commons.wikimedia.org/wiki/File:Fanal_(Madeira,_Portugal),_Lorbeerwald_--_2025_--_1554.jpg",
+  "by": "Dietmar Rabich",
+  "lic": "CC BY-SA 4.0"
+ },
+ "fanal_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Fanal_(Madeira,_Portugal),_Lorbeerwald_--_2025_--_1532.jpg",
+  "by": "Dietmar Rabich",
+  "lic": "CC BY-SA 4.0"
+ },
+ "fanal_3": {
+  "src": "https://commons.wikimedia.org/wiki/File:Fanal_(Madeira,_Portugal),_Lorbeerwald_--_2025_--_1546.jpg",
+  "by": "Dietmar Rabich",
+  "lic": "CC BY-SA 4.0"
+ },
+ "fanal_4": {
+  "src": "https://commons.wikimedia.org/wiki/File:Fanal_(Madeira,_Portugal),_Lorbeerwald_--_2025_--_1525.jpg",
   "by": "Dietmar Rabich",
   "lic": "CC BY-SA 4.0"
  },
@@ -63,6 +228,56 @@ window.CREDITS = {
   "src": "https://commons.wikimedia.org/wiki/File:25Fontes-Madeira-2013.JPG",
   "by": "Bj\u00f8rn Christian T\u00f8rrissen",
   "lic": "CC BY-SA 3.0"
+ },
+ "fontes25_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Madeira-Rabacal-Levada_das_25_Fontes_(PR6)-way_to_bridge-02ASD.jpg",
+  "by": "Asurnipal",
+  "lic": "CC BY-SA 4.0"
+ },
+ "fontes25_3": {
+  "src": "https://commons.wikimedia.org/wiki/File:Madeira-Rabacal-Levada_das_25_Fontes_(PR6)-bridge-05ASD.jpg",
+  "by": "Asurnipal",
+  "lic": "CC BY-SA 4.0"
+ },
+ "furado": {
+  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Furado_(Ribeiro_Frio)_tunnels_(26320332869).jpg",
+  "by": "VillageHero from Ulm, Germany",
+  "lic": "CC BY-SA 2.0"
+ },
+ "furado_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Furado,_Madeira_-_2013-04-05_-_90145224.jpg",
+  "by": "Sergey Ashmarin",
+  "lic": "CC BY-SA 3.0"
+ },
+ "furado_3": {
+  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Furado_(Ribeiro_Frio)_moss_forest_(26320345279).jpg",
+  "by": "VillageHero from Ulm, Germany",
+  "lic": "CC BY-SA 2.0"
+ },
+ "furao_h1": {
+  "src": "https://www.quintadofurao.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "furao_h2": {
+  "src": "https://www.quintadofurao.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "furao_h3": {
+  "src": "https://www.quintadofurao.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "furao_h4": {
+  "src": "https://www.quintadofurao.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "furao_h5": {
+  "src": "https://www.quintadofurao.com/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
  },
  "garajau": {
   "src": "https://commons.wikimedia.org/wiki/File:Madeira_-_Miradouro_do_Cristo_Rei_do_Garajau_(33422872381).jpg",
@@ -78,6 +293,21 @@ window.CREDITS = {
   "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Rei.jpg",
   "by": "Tiia Monto",
   "lic": "CC BY 4.0"
+ },
+ "levada_rei_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Rei,_Madeira,_PR_10,_waterfall.jpg",
+  "by": "Gerda Arendt",
+  "lic": "CC0"
+ },
+ "levada_rei_3": {
+  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Rei,_Madeira,_PR_10,_origin.jpg",
+  "by": "Gerda Arendt",
+  "lic": "CC0"
+ },
+ "levada_rei_4": {
+  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Rei,_Madeira,_PR_10,_fern_and_bird.jpg",
+  "by": "Gerda Arendt",
+  "lic": "CC0"
  },
  "machico": {
   "src": "https://commons.wikimedia.org/wiki/File:Z%C3%A1toka_Machico_2009.JPG",
@@ -134,6 +364,26 @@ window.CREDITS = {
   "by": "Dietmar Rabich",
   "lic": "CC BY-SA 4.0"
  },
+ "pr1_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Vereda_do_Areeiro_through_rock,_Santana_or_C%C3%A2mara_de_Lobos,_Madeira,_2023_May.jpg",
+  "by": "Ximonic (Simo R\u00e4s\u00e4nen)",
+  "lic": "CC BY-SA 4.0"
+ },
+ "pr1_3": {
+  "src": "https://commons.wikimedia.org/wiki/File:View_from_path_to_Pico_Ruivo_to_Pico_Arieiro_(38096681121).jpg",
+  "by": "VillageHero from Ulm, Germany",
+  "lic": "CC BY-SA 2.0"
+ },
+ "pr1_4": {
+  "src": "https://commons.wikimedia.org/wiki/File:Vereda_do_Areeiro,_Santana_or_C%C3%A2mara_de_Lobos,_Madeira,_2023_May.jpg",
+  "by": "Ximonic (Simo R\u00e4s\u00e4nen)",
+  "lic": "CC BY-SA 4.0"
+ },
+ "queimadas": {
+  "src": "https://commons.wikimedia.org/wiki/File:Casa_das_Queimadas_-_2009-06-26.jpg",
+  "by": "Jean &amp; Nathalie",
+  "lic": "CC BY 2.0"
+ },
  "reids": {
   "src": "https://commons.wikimedia.org/wiki/File:Funchal,_Belmond_Reid%E2%80%99s_Palace.jpg",
   "by": "Dr. Thomas Liptak",
@@ -149,105 +399,25 @@ window.CREDITS = {
   "by": "UggBoy UggGirl",
   "lic": "CC BY 2.0"
  },
+ "reserve_h1": {
+  "src": "https://www.savoysignature.com/thereserve/en/",
+  "by": "Official hotel website",
+  "lic": "\u00a9 hotel"
+ },
+ "ribeiro_frio": {
+  "src": "https://commons.wikimedia.org/wiki/File:Ribeiro_Frio_(Madeira,_Portugal),_Ribeiro-Frio-Wasserfall_--_2025_--_1502.jpg",
+  "by": "Dietmar Rabich",
+  "lic": "CC BY-SA 4.0"
+ },
  "risco": {
   "src": "https://commons.wikimedia.org/wiki/File:Cascata_do_Risco,_waterfall,_Madeira_03.jpg",
   "by": "GualdimG",
   "lic": "CC BY-SA 4.0"
  },
- "santana": {
-  "src": "https://commons.wikimedia.org/wiki/File:Traditional_farmhouse_-_Santana_06.jpg",
-  "by": "H. Zell",
-  "lic": "CC BY-SA 3.0"
- },
- "saolourenco": {
-  "src": "https://commons.wikimedia.org/wiki/File:Ponta_de_S%C3%A3o_Louren%C3%A7o,_Madeira,_Portugal,_2019-05-28,_DD_31.jpg",
-  "by": "Diego Delso",
+ "risco_2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Madeira-Levada_do_Risco_(path_PR6.1)-Casa_do_Rabacal-hiking_trail-01ASD.jpg",
+  "by": "Asurnipal",
   "lic": "CC BY-SA 4.0"
- },
- "savoy": {
-  "src": "https://commons.wikimedia.org/wiki/File:Savoy_Palace,_Funchal_-_2022-02-14_-_DSC07846.jpg",
-  "by": "Paulo SP/ Wikimedia",
-  "lic": "CC BY-SA 4.0"
- },
- "savoy2": {
-  "src": "https://commons.wikimedia.org/wiki/File:Savoy_Palace,_Funchal_-_2022-02-14_-_DSC07848.jpg",
-  "by": "Paulo SP/ Wikimedia",
-  "lic": "CC BY-SA 4.0"
- },
- "seixal": {
-  "src": "https://commons.wikimedia.org/wiki/File:Praia_da_Laje_-_Ilha_da_Madeira_-_Portugal_(6836899475).jpg",
-  "by": "Vitor Oliveira from Torres Vedras, PORTUGAL",
-  "lic": "CC BY-SA 2.0"
- },
- "tap_plane": {
-  "src": "https://commons.wikimedia.org/wiki/File:TAP_Air_Portugal_A321Neo_-_TP257_Lisbon_to_Toronto.jpg",
-  "by": "Siyuan He",
-  "lic": "Public domain"
- },
- "toboggan": {
-  "src": "https://commons.wikimedia.org/wiki/File:Toboggan_Downhill._Monte,_Funchal.jpg",
-  "by": "\u0412\u0432\u043b\u0430\u0441\u0435\u043d\u043a\u043e",
-  "lic": "CC BY-SA 3.0"
- },
- "veu_noiva": {
-  "src": "https://commons.wikimedia.org/wiki/File:Mirador_del_Velo_de_Novia,_Seixal,_Madeira,_Portugal,_2019-05-30,_DD_68.jpg",
-  "by": "Diego Delso",
-  "lic": "CC BY-SA 4.0"
- },
- "albatroz_h1": {
-  "src": "https://www.albatrozhotel.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "albatroz_h2": {
-  "src": "https://www.albatrozhotel.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "albatroz_h3": {
-  "src": "https://www.albatrozhotel.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "cliffbay_h1": {
-  "src": "https://www.portobay.com/en/hotels/madeira-hotels/les-suites-at-the-cliff-bay/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "estalagem_h1": {
-  "src": "https://www.pontadosol.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "furao_h1": {
-  "src": "https://www.quintadofurao.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "furao_h2": {
-  "src": "https://www.quintadofurao.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "furao_h3": {
-  "src": "https://www.quintadofurao.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "furao_h4": {
-  "src": "https://www.quintadofurao.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "furao_h5": {
-  "src": "https://www.quintadofurao.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "reserve_h1": {
-  "src": "https://www.savoysignature.com/thereserve/en/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
  },
  "saccharum_h1": {
   "src": "https://www.savoysignature.com/saccharumhotel/en/",
@@ -264,6 +434,41 @@ window.CREDITS = {
   "by": "Official hotel website",
   "lic": "\u00a9 hotel"
  },
+ "santana": {
+  "src": "https://commons.wikimedia.org/wiki/File:Traditional_farmhouse_-_Santana_06.jpg",
+  "by": "H. Zell",
+  "lic": "CC BY-SA 3.0"
+ },
+ "sao_vicente": {
+  "src": "https://commons.wikimedia.org/wiki/File:S%C3%A3o_Vicente_valley_(from_Encumeada)_(38064029182).jpg",
+  "by": "VillageHero from Ulm, Germany",
+  "lic": "CC BY-SA 2.0"
+ },
+ "saolourenco": {
+  "src": "https://commons.wikimedia.org/wiki/File:Ponta_de_S%C3%A3o_Louren%C3%A7o,_Madeira,_Portugal,_2019-05-28,_DD_31.jpg",
+  "by": "Diego Delso",
+  "lic": "CC BY-SA 4.0"
+ },
+ "saolourenco_3": {
+  "src": "https://commons.wikimedia.org/wiki/File:Cani%C3%A7al_(Madeira,_Portugal),_Ponta_de_S%C3%A3o_Louren%C3%A7o_--_2025_--_1358.jpg",
+  "by": "Dietmar Rabich",
+  "lic": "CC BY-SA 4.0"
+ },
+ "saolourenco_4": {
+  "src": "https://commons.wikimedia.org/wiki/File:Cani%C3%A7al_(Madeira,_Portugal),_Ponta_de_S%C3%A3o_Louren%C3%A7o_--_2025_--_1343.jpg",
+  "by": "Dietmar Rabich",
+  "lic": "CC BY-SA 4.0"
+ },
+ "savoy": {
+  "src": "https://commons.wikimedia.org/wiki/File:Savoy_Palace,_Funchal_-_2022-02-14_-_DSC07846.jpg",
+  "by": "Paulo SP/ Wikimedia",
+  "lic": "CC BY-SA 4.0"
+ },
+ "savoy2": {
+  "src": "https://commons.wikimedia.org/wiki/File:Savoy_Palace,_Funchal_-_2022-02-14_-_DSC07848.jpg",
+  "by": "Paulo SP/ Wikimedia",
+  "lic": "CC BY-SA 4.0"
+ },
  "savoy_h1": {
   "src": "https://www.savoysignature.com/savoypalacehotel/en/",
   "by": "Official hotel website",
@@ -273,6 +478,11 @@ window.CREDITS = {
   "src": "https://www.savoysignature.com/savoypalacehotel/en/",
   "by": "Official hotel website",
   "lic": "\u00a9 hotel"
+ },
+ "seixal": {
+  "src": "https://commons.wikimedia.org/wiki/File:Praia_da_Laje_-_Ilha_da_Madeira_-_Portugal_(6836899475).jpg",
+  "by": "Vitor Oliveira from Torres Vedras, PORTUGAL",
+  "lic": "CC BY-SA 2.0"
  },
  "socalco_h1": {
   "src": "https://www.socalconature.com/",
@@ -304,99 +514,19 @@ window.CREDITS = {
   "by": "Official hotel website",
   "lic": "\u00a9 hotel"
  },
- "castanheiro_h1": {
-  "src": "https://www.castanheiroboutiquehotel.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
+ "tap_plane": {
+  "src": "https://commons.wikimedia.org/wiki/File:TAP_Air_Portugal_A321Neo_-_TP257_Lisbon_to_Toronto.jpg",
+  "by": "Siyuan He",
+  "lic": "Public domain"
  },
- "castanheiro_h2": {
-  "src": "https://www.castanheiroboutiquehotel.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
+ "toboggan": {
+  "src": "https://commons.wikimedia.org/wiki/File:Toboggan_Downhill._Monte,_Funchal.jpg",
+  "by": "\u0412\u0432\u043b\u0430\u0441\u0435\u043d\u043a\u043e",
+  "lic": "CC BY-SA 3.0"
  },
- "castanheiro_h3": {
-  "src": "https://www.castanheiroboutiquehotel.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "castanheiro_h4": {
-  "src": "https://www.castanheiroboutiquehotel.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "casabranca_h1": {
-  "src": "https://www.quintacasabranca.pt/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "casabranca_h2": {
-  "src": "https://www.quintacasabranca.pt/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "casabranca_h3": {
-  "src": "https://www.quintacasabranca.pt/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "aquanatura_h1": {
-  "src": "https://www.aquanaturamadeira.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "aquanatura_h2": {
-  "src": "https://www.aquanaturamadeira.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "aquanatura_h3": {
-  "src": "https://www.aquanaturamadeira.com/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "cliffbay_h2": {
-  "src": "https://www.portobay.com/en/hotels/madeira-hotels/the-cliff-bay/",
-  "by": "Official hotel website",
-  "lic": "\u00a9 hotel"
- },
- "alecrim": {
-  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Alecrim_creek_(38095371001).jpg",
-  "by": "VillageHero from Ulm, Germany",
-  "lic": "CC BY-SA 2.0"
- },
- "dona_beja": {
-  "src": "https://commons.wikimedia.org/wiki/File:Lagoa_da_Dona_Beja.jpg",
-  "by": "Tiia Monto",
-  "lic": "CC BY 4.0"
- },
- "cedros": {
-  "src": "https://commons.wikimedia.org/wiki/File:Verlauf_der_Levada_dos_Cedros.jpg",
-  "by": "Rudolphu",
+ "veu_noiva": {
+  "src": "https://commons.wikimedia.org/wiki/File:Mirador_del_Velo_de_Novia,_Seixal,_Madeira,_Portugal,_2019-05-30,_DD_68.jpg",
+  "by": "Diego Delso",
   "lic": "CC BY-SA 4.0"
- },
- "chao_ribeira": {
-  "src": "https://commons.wikimedia.org/wiki/File:Ch%C3%A3o_da_Ribeira,_Madeira_-_2021-07-01_-_IMG_4933.jpg",
-  "by": "Paulo SP/ Wikimedia",
-  "lic": "CC BY-SA 4.0"
- },
- "furado": {
-  "src": "https://commons.wikimedia.org/wiki/File:Levada_do_Furado_(Ribeiro_Frio)_tunnels_(26320332869).jpg",
-  "by": "VillageHero from Ulm, Germany",
-  "lic": "CC BY-SA 2.0"
- },
- "queimadas": {
-  "src": "https://commons.wikimedia.org/wiki/File:Casa_das_Queimadas_-_2009-06-26.jpg",
-  "by": "Jean &amp; Nathalie",
-  "lic": "CC BY 2.0"
- },
- "ribeiro_frio": {
-  "src": "https://commons.wikimedia.org/wiki/File:Ribeiro_Frio_(Madeira,_Portugal),_Ribeiro-Frio-Wasserfall_--_2025_--_1502.jpg",
-  "by": "Dietmar Rabich",
-  "lic": "CC BY-SA 4.0"
- },
- "sao_vicente": {
-  "src": "https://commons.wikimedia.org/wiki/File:S%C3%A3o_Vicente_valley_(from_Encumeada)_(38064029182).jpg",
-  "by": "VillageHero from Ulm, Germany",
-  "lic": "CC BY-SA 2.0"
  }
 };
