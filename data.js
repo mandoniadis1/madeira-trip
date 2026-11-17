@@ -169,19 +169,24 @@ window.STAYS = [
 ];
 
 /* ---------------- "Pick for me": a hand-chosen set built around the big lush hikes ---------------- */
-// Checked against the planner: with Saccharum (4 nights) then Reid's (2), all five fit with ≈ 6 h 30 of total driving.
+// Both big hikes are done from the Saccharum side so Reid's gets a full day with no car (spa, pools, tea).
+// Day indexes with the 4 + 2 split: 2 = Jan 10, 3 = Jan 11, 4 = Jan 12, 5 = Jan 13 (move), 6 = Jan 14, 7 = Jan 15 (fly).
+// Checked against the site's drive estimates: ≈ 6 h 15 min of driving in total, including both airport drives.
 window.SUGGESTED = {
-  picks: ["pr6", "fanal", "seixal", "pr9", "pr1"],
+  picks: ["pr6", "fanal", "pr1", "pr9"],
   stays: { s1: "saccharum", s2: "reids" },
-  title: "My picks for you: three big hikes, plus the fairy-tale forest",
+  split: 4,
+  days: { "1:day": "a_settle", "2:day": "rest", "3:day": "pr6", "3:also": "fanal", "4:day": "pr1", "5:day": "pr9", "6:day": "rest", "7:day": "d_brekkie" },
+  title: "My picks for you: three big hikes, the fairy-tale forest and a full spa day",
   lines: [
-    "<b>Jan 10</b> Stay put at Saccharum. It's your lazy day.",
-    "<b>Jan 11 · 25 Fontes & Risco</b>: the lushest big hike on the west plateau, about 25 min from Saccharum. It's fine in drizzle.",
-    "<b>Jan 12 · Fanal + Seixal</b>: the mossy laurel trees in the fog, then the black-sand beach under the north cliffs. It's an easier day before the two big ones.",
-    "<b>Jan 13 · Caldeirão Verde</b> on the way to Reid's. It's long (4–5 hrs, with tunnels, so bring a headlamp), and you arrive in Funchal for dinner. Keep your bags in the trunk, out of sight, at the trailhead.",
-    "<b>Jan 14 · Pico do Arieiro → Pico Ruivo</b>: the famous ridge walk, 35 min from Reid's. It needs a clear morning. If the peaks are in cloud, swap it for Levada do Furado + Balcões, which is also 30 min away and fine in mist.",
-    "<b>Bonus, Jan 15:</b> your flight is at 3pm, so an early 1-hour Balcões walk (8–10am) still gets you to the airport in time.",
+    "<b>Jan 10 · Lazy day at Saccharum</b>: the spa and pools, no car.",
+    "<b>Jan 11 · 25 Fontes & Risco + Fanal</b>: the lushest big hike on the west plateau (about 25 min away), then the mossy laurel trees about 30 min on. Both are fine in mist, and Fanal is even better in fog.",
+    "<b>Jan 12 · Pico do Arieiro → Pico Ruivo</b>: the famous ridge walk, about 50 min from Saccharum. It needs a clear morning, so if Jan 12 looks cloudy, swap it with Jan 11. You're back at Saccharum's spa that evening.",
+    "<b>Jan 13 · Caldeirão Verde</b> on the way to Reid's: 4–5 hrs, with tunnels, so bring a headlamp. Start by 9 and you'll be at Reid's mid-afternoon for the pools and tea. Keep your bags in the trunk, out of sight, at the trailhead.",
+    "<b>Jan 14 · Reid's day, no car</b>: the spa, the saltwater pools in the rocks, afternoon tea, and the Old Town or Desarma for dinner.",
+    "<b>Jan 15 · Slow breakfast</b>, then 25 min to the airport for the 3pm flight.",
   ],
+  why: "Why only four picks? With six nights, a lazy first day and a free day at Reid's, you have three days out, and each one gets a big hike. Seixal beach didn't fit. The days below are already filled in, and the Journey shows it in pictures.",
 };
 
 /* ---------------- RESTAURANTS (Google Maps links, no photos) ---------------- */

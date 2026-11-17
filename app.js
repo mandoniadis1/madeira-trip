@@ -635,11 +635,11 @@
     state.mine = { picks: state.picks.slice(), days: { ...state.days }, stays: { ...state.stays }, split: state.split };
     state.picks = SUGGESTED.picks.slice();
     state.stays = { ...SUGGESTED.stays };
-    state.split = 4;
-    state.days = {};
+    state.split = SUGGESTED.split || 4;
+    state.days = { ...(SUGGESTED.days || {}) };
     state.suggested = true;
     buildDays();
-    autoPlan(true);
+    if (!SUGGESTED.days) autoPlan(true); // hand-set days win over the least-driving planner
     save(); renderAll();
     const el = document.getElementById("suggest-note");
     scrollTo({ top: el.getBoundingClientRect().top + scrollY - 90, behavior: "smooth" });
@@ -658,7 +658,7 @@
       <div class="suggest">
         <h3>${SUGGESTED.title}</h3>
         <ul>${SUGGESTED.lines.map((l) => `<li>${l}</li>`).join("")}</ul>
-        <p class="suggest-why">Why only five? With six nights and a lazy first day, you have four days out, so three big hikes is the most that fits without rushing. The days below are already filled in, and the Journey shows it in pictures.</p>
+        <p class="suggest-why">${SUGGESTED.why || ""}</p>
         <div class="suggest-actions">
           <a href="#days" class="pick-btn">See the days</a>
           ${back ? `<button class="ghost" data-suggest="restore" type="button">Bring back my ${state.mine.picks.length} picks</button>` : ""}
