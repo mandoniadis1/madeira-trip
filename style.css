@@ -342,3 +342,9 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
 .dine-time { flex: none; text-align: right; font-size: 15px; color: var(--ink); white-space: nowrap; }
 .dine-time small { display: block; font-size: 12.5px; color: var(--muted); }
 @media (max-width: 800px) { .dine-cols { grid-template-columns: 1fr; gap: 34px; } }
+/* phones: no box-inside-a-page scrolling; list every pick in full */
+@media (max-width: 800px) {
+  .drives { max-height: none; overflow: visible; padding-right: 0; }
+  .drives-head .scroll-hint { display: none; }
+  .drives li { padding: 5px 0; line-height: 1.35; }
+}

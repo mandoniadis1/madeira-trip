@@ -284,7 +284,7 @@
           <h4>${esc(h.name)}</h4>
           <div class="area">${esc(h.area)}</div>
           <p>${esc(h.desc)}</p>
-          ${fit.trip ? `<div class="trip-total">Total trip driving ${fmt(fit.trip.total)}${fit.trip.uncovered.length ? ` · <span class="warn-text">${fit.trip.uncovered.length} pick${fit.trip.uncovered.length > 1 ? "s" : ""} won't fit</span>` : ""}</div>` : ""}
+          ${fit.trip ? `<div class="trip-total">Total trip driving ${fmt(fit.trip.total)}</div>` : ""}
           <dl class="facts">
             <dt>Style</dt><dd>${esc(h.style || "")}</dd>
             <dt>Jan rain</dt><dd class="rain r${h.rain}">${RAIN[h.rain]}</dd>
@@ -292,7 +292,7 @@
             <dt>Airport</dt><dd>${fmt(fit.air)}</dd>
             ${state.picks.length ? `<dt>Your picks</dt><dd>avg ${fmt(fit.a)}</dd>` : ""}
           </dl>
-          ${closest.length ? `<p class="drives-head">Drive to your picks · ${closest.length}${closest.length > 5 ? " · scroll for more" : ""}</p><ul class="drives">${closest.map((d) => `<li><span>${esc(d.p.name)}</span><span>${fmt(d.m)}</span></li>`).join("")}</ul>` : ""}
+          ${closest.length ? `<p class="drives-head">Drive to your picks · ${closest.length}${closest.length > 5 ? `<span class="scroll-hint"> · scroll for more</span>` : ""}</p><ul class="drives">${closest.map((d) => `<li><span>${esc(d.p.name)}</span><span>${fmt(d.m)}</span></li>`).join("")}</ul>` : ""}
           <div class="links">${mapLink(h.link, "Visit the hotel")}${chosen ? "" : `<button class="pick-btn">Choose</button>`}</div>
         </div>
       </article>`;
@@ -605,9 +605,7 @@
       }
     });
     save(); renderAll();
-    const msg = plan.uncovered.length
-      ? `Planned, with ${fmt(plan.total)} of driving in total. These didn't fit: ${plan.uncovered.map((p) => p.name).join(", ")}.`
-      : `Planned all ${state.picks.length} picks with ${fmt(plan.total)} of driving in total, including both airport drives.`;
+    const msg = `Planned with ${fmt(plan.total)} of driving in total, including both airport drives.`;
     $("#plan-msg").textContent = msg;
     flash(document.getElementById("days-tools"));
   }
