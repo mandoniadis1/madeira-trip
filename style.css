@@ -267,10 +267,15 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
 .rain.r3 { color: var(--accent); }
 :root[data-theme="night"] .rain.r0, :root[data-theme="night"] .rain.r1 { color: #8fbf86; }
 .card .drives-head, .drives-head { margin: 12px 0 0; line-height: 1.4; padding-top: 10px; border-top: 1px solid var(--line); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.drives { list-style: none; margin: 6px 0 0; padding: 0 6px 0 0; font-size: 14.5px; max-height: 9.6em; overflow-y: auto; overscroll-behavior: contain;
+/* the list fills whatever height the card has left (flex-basis 0 so it never makes the card taller), and scrolls inside that */
+.drives { list-style: none; margin: 6px 0 0; padding: 0 6px 0 0; font-size: 14.5px; flex: 1 1 0; min-height: 7.4em; overflow-y: auto; overscroll-behavior: contain;
   scrollbar-width: thin; scrollbar-color: var(--line) transparent; }
 .drives li { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; color: var(--ink-soft); }
 .drives li span:last-child { white-space: nowrap; color: var(--muted); }
+.drives li.none span { white-space: normal; font-style: italic; }
+.drives-head .scroll-hint { display: none; }
+.drives-head.can-scroll .scroll-hint { display: inline; }
+.card .drives-else { margin: 6px 0 0; font-size: 13.5px; color: var(--muted); font-style: italic; }
 #hotels .tips { margin-top: 30px; }
 
 /* ---------- step III: days ---------- */
@@ -344,7 +349,20 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
 @media (max-width: 800px) { .dine-cols { grid-template-columns: 1fr; gap: 34px; } }
 /* phones: no box-inside-a-page scrolling; list every pick in full */
 @media (max-width: 800px) {
-  .drives { max-height: none; overflow: visible; padding-right: 0; }
-  .drives-head .scroll-hint { display: none; }
+  .drives { flex: none; min-height: 0; overflow: visible; padding-right: 0; }
+  .drives-head.can-scroll .scroll-hint { display: none; }
   .drives li { padding: 5px 0; line-height: 1.35; }
 }
+
+/* ---------- "Pick for me" ---------- */
+.suggest-bar { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin: 4px 0 18px; }
+.suggest-bar span { color: var(--muted); font-size: 15.5px; max-width: 560px; }
+.suggest { border: 1px solid var(--line); border-left: 2px solid var(--accent); background: var(--paper); padding: 24px 28px; margin: 0 0 26px; }
+.suggest h3 { margin: 0 0 10px; font: 500 28px/1.2 var(--serif); }
+.suggest ul { margin: 0; padding: 0; list-style: none; }
+.suggest li { padding: 7px 0; border-bottom: 1px solid var(--line); color: var(--ink-soft); font-size: 16.5px; }
+.suggest li b { color: var(--ink); font-weight: 500; }
+.suggest-why { color: var(--muted); font-size: 15px; margin: 14px 0 0; font-style: italic; }
+.suggest-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
+.suggest-actions a.pick-btn { border-bottom: 0; text-decoration: none; display: inline-block; }
+@media (max-width: 800px) { .suggest { padding: 18px; } .suggest h3 { font-size: 24px; } }

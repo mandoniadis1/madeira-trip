@@ -168,6 +168,22 @@ window.STAYS = [
     why: "One more Amex FHR hotel to finish. FHR comes first, then lowest total trip driving. Your 3pm flight means no airport hotel is needed." },
 ];
 
+/* ---------------- "Pick for me": a hand-chosen set built around the big lush hikes ---------------- */
+// Checked against the planner: with Saccharum (4 nights) then Reid's (2), all five fit with ≈ 6 h 30 of total driving.
+window.SUGGESTED = {
+  picks: ["pr6", "fanal", "seixal", "pr9", "pr1"],
+  stays: { s1: "saccharum", s2: "reids" },
+  title: "My picks for you: three big hikes, plus the fairy-tale forest",
+  lines: [
+    "<b>Jan 10</b> Stay put at Saccharum. It's your lazy day.",
+    "<b>Jan 11 · 25 Fontes & Risco</b>: the lushest big hike on the west plateau, about 25 min from Saccharum. It's fine in drizzle.",
+    "<b>Jan 12 · Fanal + Seixal</b>: the mossy laurel trees in the fog, then the black-sand beach under the north cliffs. It's an easier day before the two big ones.",
+    "<b>Jan 13 · Caldeirão Verde</b> on the way to Reid's. It's long (4–5 hrs, with tunnels, so bring a headlamp), and you arrive in Funchal for dinner. Keep your bags in the trunk, out of sight, at the trailhead.",
+    "<b>Jan 14 · Pico do Arieiro → Pico Ruivo</b>: the famous ridge walk, 35 min from Reid's. It needs a clear morning. If the peaks are in cloud, swap it for Levada do Furado + Balcões, which is also 30 min away and fine in mist.",
+    "<b>Bonus, Jan 15:</b> your flight is at 3pm, so an early 1-hour Balcões walk (8–10am) still gets you to the airport in time.",
+  ],
+};
+
 /* ---------------- RESTAURANTS (Google Maps links, no photos) ---------------- */
 window.RESTAURANTS = [
   { id: "william", in: ["reids"], name: "William", tag: "Michelin-starred · at Reid's Palace", lat: 32.6375, lon: -16.9285, q: "William Restaurant Reid's Palace Funchal" },

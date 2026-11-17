@@ -265,12 +265,25 @@
         </div>
       </div>`;
     }).join("");
+    markScrollable();
   }
+  function markScrollable() {
+    requestAnimationFrame(() => document.querySelectorAll(".drives").forEach((ul) => {
+      const head = ul.previousElementSibling;
+      if (head) head.classList.toggle("can-scroll", ul.scrollHeight > ul.clientHeight + 2);
+    }));
+  }
+  addEventListener("resize", () => markScrollable());
 
   function hotelCard(h, fit, st, rank, chosen) {
     const elsewhere = STAYS.filter((s) => s.id !== st.id && state.stays[s.id] === h.id).map((s) => "Stay " + s.n);
     const best = !chosen && rank < 2 && (state.picks.length || st.role === "resort");
-    const closest = fit.drives; // every pick, closest first (the list scrolls)
+    // only the picks you'd do from this stay: once the other stay has a hotel, picks closer to it are left out
+    const otherSt = STAYS.find((x) => x.id !== st.id);
+    const otherH = otherSt && state.stays[otherSt.id] !== h.id ? stayHotel(otherSt.id) : null;
+    const closest = otherH ? fit.drives.filter((d) => d.m <= drive(otherH, d.p)) : fit.drives;
+    const elsewhereN = fit.drives.length - closest.length;
+    const shortName = (n) => n.split(/[,(]/)[0].trim();
     return `
       <article class="card hotel ${chosen ? "chosen" : ""}" id="hc-${st.id}-${h.id}" data-pick="stay:${st.id}" data-val="${h.id}">
         ${gallery(h.imgs)}
@@ -289,10 +302,12 @@
             <dt>Style</dt><dd>${esc(h.style || "")}</dd>
             <dt>Jan rain</dt><dd class="rain r${h.rain}">${RAIN[h.rain]}</dd>
             <dt>Setting</dt><dd>${LUSH[h.lush]}</dd>
-            <dt>Airport</dt><dd>${fmt(fit.air)}</dd>
-            ${state.picks.length ? `<dt>Your picks</dt><dd>avg ${fmt(fit.a)}</dd>` : ""}
+            <dt>${st.role === "resort" ? "From the airport" : "To the airport"}</dt><dd>${fmt(fit.air)}</dd>
+            ${state.picks.length ? `<dt>Your picks</dt><dd>${closest.length ? "avg " + fmt(avg(closest.map((d) => d.m))) : "—"}</dd>` : ""}
           </dl>
-          ${closest.length ? `<p class="drives-head">Drive to your picks · ${closest.length}${closest.length > 5 ? `<span class="scroll-hint"> · scroll for more</span>` : ""}</p><ul class="drives">${closest.map((d) => `<li><span>${esc(d.p.name)}</span><span>${fmt(d.m)}</span></li>`).join("")}</ul>` : ""}
+          ${fit.drives.length ? `<p class="drives-head">${otherH ? `Picks nearer here than ${esc(shortName(otherH.name))}` : "Drive to your picks"} · ${closest.length}<span class="scroll-hint"> · scroll for more</span></p>
+            <ul class="drives">${closest.map((d) => `<li><span>${esc(d.p.name)}</span><span>${fmt(d.m)}</span></li>`).join("") || `<li class="none"><span>None: all your picks are closer to ${esc(shortName(otherH.name))}</span></li>`}</ul>
+            ${elsewhereN ? `<p class="drives-else">+ ${elsewhereN} more pick${elsewhereN > 1 ? "s" : ""} closer to ${esc(shortName(otherH.name))}, your Stay ${otherSt.n}</p>` : ""}` : ""}
           <div class="links">${mapLink(h.link, "Visit the hotel")}${chosen ? "" : `<button class="pick-btn">Choose</button>`}</div>
         </div>
       </article>`;
@@ -584,12 +599,12 @@
     }).join("");
   }
 
-  function autoPlan() {
+  function autoPlan(quiet = false) {
     const h1 = stayHotel("s1"), h2 = stayHotel("s2");
-    if (!state.picks.length) { alert("Add some experiences in section I first."); return; }
-    if (!h1 || !h2) { alert("Choose both hotels first, so the plan knows where you're sleeping."); return; }
+    if (!state.picks.length) { if (!quiet) alert("Add some experiences in section I first."); return; }
+    if (!h1 || !h2) { if (!quiet) alert("Choose both hotels first, so the plan knows where you're sleeping."); return; }
     const hasPlans = DAYS.some((d, i) => ["stay", "move"].includes(d.type) && state.days[`${i}:day`]);
-    if (hasPlans && !confirm("Replace your current day plans with the least-driving plan?")) return;
+    if (!quiet && hasPlans && !confirm("Replace your current day plans with the least-driving plan?")) return;
     const plan = planTrip(h1, h2);
     plan.assign.forEach(({ kind, i, list }) => {
       delete state.days[`${i}:also`];
@@ -607,7 +622,49 @@
     save(); renderAll();
     const msg = `Planned with ${fmt(plan.total)} of driving in total, including both airport drives.`;
     $("#plan-msg").textContent = msg;
-    flash(document.getElementById("days-tools"));
+    if (!quiet) flash(document.getElementById("days-tools"));
+  }
+
+  /* ================= "Pick for me" ================= */
+  const sameSet = (a, b) => a.length === b.length && a.every((x) => b.includes(x));
+  function pickForMe() {
+    if (state.suggested) { flash(document.getElementById("suggest-note")); return; }
+    const n = state.picks.length;
+    if (n && !sameSet(state.picks, SUGGESTED.picks) &&
+        !confirm(`Swap your ${n} picks for my suggested set of ${SUGGESTED.picks.length}? Your picks and day plans are saved, and "Bring back my picks" restores them.`)) return;
+    state.mine = { picks: state.picks.slice(), days: { ...state.days }, stays: { ...state.stays }, split: state.split };
+    state.picks = SUGGESTED.picks.slice();
+    state.stays = { ...SUGGESTED.stays };
+    state.split = 4;
+    state.days = {};
+    state.suggested = true;
+    buildDays();
+    autoPlan(true);
+    save(); renderAll();
+    const el = document.getElementById("suggest-note");
+    scrollTo({ top: el.getBoundingClientRect().top + scrollY - 90, behavior: "smooth" });
+    flash(el);
+  }
+  function endSuggestion(restore) {
+    if (restore && state.mine) Object.assign(state, { picks: state.mine.picks, days: state.mine.days, stays: state.mine.stays, split: state.mine.split });
+    delete state.mine; state.suggested = false;
+    save(); renderAll();
+  }
+  function renderSuggest() {
+    const box = $("#suggest-note");
+    if (!state.suggested) { box.innerHTML = ""; return; }
+    const back = state.mine && state.mine.picks.length;
+    box.innerHTML = `
+      <div class="suggest">
+        <h3>${SUGGESTED.title}</h3>
+        <ul>${SUGGESTED.lines.map((l) => `<li>${l}</li>`).join("")}</ul>
+        <p class="suggest-why">Why only five? With six nights and a lazy first day, you have four days out, so three big hikes is the most that fits without rushing. The days below are already filled in, and the Journey shows it in pictures.</p>
+        <div class="suggest-actions">
+          <a href="#days" class="pick-btn">See the days</a>
+          ${back ? `<button class="ghost" data-suggest="restore" type="button">Bring back my ${state.mine.picks.length} picks</button>` : ""}
+          <button class="ghost" data-suggest="keep" type="button">Keep these</button>
+        </div>
+      </div>`;
   }
 
   /* ================= IV. storyboard ================= */
@@ -719,7 +776,7 @@
   $("#fab-toc").addEventListener("click", () => { document.body.classList.toggle("rail-open-toc"); document.body.classList.remove("rail-open-notes"); });
   $("#fab-notes").addEventListener("click", () => { document.body.classList.toggle("rail-open-notes"); document.body.classList.remove("rail-open-toc"); if (document.body.classList.contains("rail-open-notes")) notesEl.focus(); });
 
-  const renderAll = () => { gid = 0; buildDays(); renderExperiences(); renderStays(); renderMap(); renderDays(); renderDining(); renderStory(); renderToc(); };
+  const renderAll = () => { gid = 0; buildDays(); renderSuggest(); renderExperiences(); renderStays(); renderMap(); renderDays(); renderDining(); renderStory(); renderToc(); };
 
   /* ================= events ================= */
   document.addEventListener("click", (e) => {
@@ -745,6 +802,9 @@
       return;
     }
     if (e.target.closest("#auto-plan")) { autoPlan(); return; }
+    if (e.target.closest("#pick-for-me")) { pickForMe(); return; }
+    const sg = e.target.closest("[data-suggest]");
+    if (sg) { endSuggestion(sg.dataset.suggest === "restore"); return; }
 
     const tog = e.target.closest("[data-toggle]");
     if (tog) {
