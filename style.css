@@ -366,3 +366,4 @@ img[src$="garajau.jpg"] { object-position: center 15%; }
 .suggest-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
 .suggest-actions a.pick-btn { border-bottom: 0; text-decoration: none; display: inline-block; }
 @media (max-width: 800px) { .suggest { padding: 18px; } .suggest h3 { font-size: 24px; } }
+.suggest-stale { margin: 0 0 14px; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--accent); display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }

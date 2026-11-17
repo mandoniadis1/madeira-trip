@@ -627,17 +627,20 @@
 
   /* ================= "Pick for me" ================= */
   const sameSet = (a, b) => a.length === b.length && a.every((x) => b.includes(x));
+  // a fingerprint of the current suggestion, so an updated plan replaces an older one you'd already loaded
+  const suggestKey = () => JSON.stringify([SUGGESTED.picks, SUGGESTED.stays, SUGGESTED.split, SUGGESTED.days]);
   function pickForMe() {
-    if (state.suggested) { flash(document.getElementById("suggest-note")); return; }
+    if (state.suggested && state.suggestKey === suggestKey()) { flash(document.getElementById("suggest-note")); return; }
     const n = state.picks.length;
-    if (n && !sameSet(state.picks, SUGGESTED.picks) &&
+    if (!state.suggested && n && !sameSet(state.picks, SUGGESTED.picks) &&
         !confirm(`Swap your ${n} picks for my suggested set of ${SUGGESTED.picks.length}? Your picks and day plans are saved, and "Bring back my picks" restores them.`)) return;
-    state.mine = { picks: state.picks.slice(), days: { ...state.days }, stays: { ...state.stays }, split: state.split };
+    if (!state.suggested || !state.mine) state.mine = { picks: state.picks.slice(), days: { ...state.days }, stays: { ...state.stays }, split: state.split }; // keep your original, not an older suggestion
     state.picks = SUGGESTED.picks.slice();
     state.stays = { ...SUGGESTED.stays };
     state.split = SUGGESTED.split || 4;
     state.days = { ...(SUGGESTED.days || {}) };
     state.suggested = true;
+    state.suggestKey = suggestKey();
     buildDays();
     if (!SUGGESTED.days) autoPlan(true); // hand-set days win over the least-driving planner
     save(); renderAll();
@@ -647,15 +650,17 @@
   }
   function endSuggestion(restore) {
     if (restore && state.mine) Object.assign(state, { picks: state.mine.picks, days: state.mine.days, stays: state.mine.stays, split: state.mine.split });
-    delete state.mine; state.suggested = false;
+    delete state.mine; delete state.suggestKey; state.suggested = false;
     save(); renderAll();
   }
   function renderSuggest() {
     const box = $("#suggest-note");
     if (!state.suggested) { box.innerHTML = ""; return; }
     const back = state.mine && state.mine.picks.length;
+    const stale = state.suggestKey !== suggestKey();
     box.innerHTML = `
       <div class="suggest">
+        ${stale ? `<p class="suggest-stale">You have an older version of this plan loaded. <button class="pick-btn" data-suggest="reload" type="button">Load the new plan</button></p>` : ""}
         <h3>${SUGGESTED.title}</h3>
         <ul>${SUGGESTED.lines.map((l) => `<li>${l}</li>`).join("")}</ul>
         <p class="suggest-why">${SUGGESTED.why || ""}</p>
@@ -804,7 +809,7 @@
     if (e.target.closest("#auto-plan")) { autoPlan(); return; }
     if (e.target.closest("#pick-for-me")) { pickForMe(); return; }
     const sg = e.target.closest("[data-suggest]");
-    if (sg) { endSuggestion(sg.dataset.suggest === "restore"); return; }
+    if (sg) { if (sg.dataset.suggest === "reload") pickForMe(); else endSuggestion(sg.dataset.suggest === "restore"); return; }
 
     const tog = e.target.closest("[data-toggle]");
     if (tog) {
